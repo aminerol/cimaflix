@@ -1,0 +1,80 @@
+
+<!-- Last Episodes Ramadan!-->
+<div class="container">
+  <div id="owl-demo">
+    <div class="item" *ngFor="let item of toDos">
+      <div class="image">
+        <a [routerLink]="['/الحلقة', 'البيت-الكبير']">
+          <span class="tut">
+            <img src="assets/imgs/poster.jpg" alt="The Flash (2014) streaming" title="The Flash (2014) poster" class="er">
+          </span>
+          <span class="h2">
+            <span class="note">23</span>
+          </span>
+        </a>
+        <div class="wrt">
+          <p>البيت الكبير</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- Last All Episodes !-->
+<div class="container">
+<div class="promo-group-header">
+  <h3 class="promo-group-header__title">آخر الحلقات المضافة</h3>
+</div>
+</div>
+<div class="container">
+<ul id="boxoffice" class="iconB">
+  <li *ngFor="let item of toDos">
+      <div class="image">
+          <a [routerLink]="['/الحلقة', 'البيت-الكبير']">
+              <span class="tut"> <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
+              <span class="h2">
+                <span class="note">23</span>
+              </span>
+          </a>
+          <div class="wrt">
+            <p>البيت الكبير</p>
+          </div>
+      </div>
+  </li>
+</ul>
+</div>
+
+<!-- Last All Movies !-->
+<div class="container">
+<div class="promo-group-header">
+  <h3 class="promo-group-header__title">آخر الافلام المضافة</h3>
+</div>
+</div>
+<div class="container">
+<ul id="boxoffice" class="iconB">
+  <li *ngFor="let item of toDos">
+      <div class="image">
+          <a [routerLink]="['/فيلم', 'الاب-الروحى']">
+              <span class="tut"> <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
+              <span class="h2">
+                <span class="VO"></span><span class="qalite">HD</span>
+              </span>
+          </a>
+          <div class="wrt">
+            <p>الاب الروحى</p>
+          </div>
+          <p class="thetype">
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          </p>
+      </div>
+  </li>
+</ul>
+</div>

@@ -1,0 +1,30 @@
+<div id="topheader">
+  <div class="wrapper row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 position_rel">
+          <a routerLink="/" class="logo pull-right"></a>
+      </div>
+      <div id="custom_link" class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+          <ul>
+              <li>
+                <a routerLink="/مسلسلات">المسلسلات</a>
+              </li>
+              <li>
+                <a routerLink="/افلام">الافلام</a>
+              </li>
+              <li>
+                <a routerLink="/مسلسلات-رمضان">مسلسلات رمضان</a>
+              </li>
+          </ul>
+      </div>
+      <div id="search-dropper" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <div id="search">
+              <form method="POST" action="search">
+                  <input type="text" name="q" data-provide="typeahead" value="ابحث من هنا" class="form-control noshadow" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ابحث من هنا';}">
+                  <button name="btnG"><i class="glyphicon glyphicon-search"></i></button>
+              </form>
+          </div>
+      </div>
+      <div class="clear"></div>
+      </div>
+  </div>
+<router-outlet></router-outlet>

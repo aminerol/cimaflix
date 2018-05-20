@@ -1,0 +1,108 @@
+#owl-demo {
+    overflow: hidden;
+}
+#owl-demo div.image div.wrt {
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden
+}
+#owl-item {
+    float: right;
+}
+#owl-demo .item img {
+    display: block;
+    width: 100%;
+    height: auto
+}
+#owl-demo .item {
+    margin: 15px 3px 25px 3px;
+    width: auto
+}
+#owl-demo .item .thetype {
+    font-family: tahoma;
+    text-align: center;
+    color: #d0dbdd;
+    font-size: 1em;
+    font-weight: 200;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 3px
+}
+#owl-demo div.image div.wrt {
+    width: auto;
+    height: 26px;
+    font-size: 1.1em;
+    font-family: 'Russo One';
+    font-weight: 100;
+    padding-left: 2px;
+    color: #fff;
+}
+#owl-demo div.image a {
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+#owl-demo span.tut:before {
+    content: '';
+    position: absolute;
+    height: 250px;
+    width: 100%;
+    z-index: 5;
+    -webkit-background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #000 100%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #000 100%);
+    -webkit-transition: all .3s
+}
+#owl-demo div.image {
+    position: relative;
+    width: auto;
+    background-color: #000
+}
+#owl-demo span.image .h2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0
+}
+#owl-demo div.image .h2 span.note {
+    top: 3px;
+    color: #fff;
+    font-size: .5em;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    right: 6px
+}
+#owl-demo div.image .h2 span.note {
+    width: 35px;
+    height: 35px;
+    padding: 8px 0 0;
+    background-color: #2196F3;
+    border-radius: 20px
+}
+#owl-demo img {
+    height: 240px;
+    width: 50px;
+    display: none
+}
+#owl-demo span.tut {
+    width: auto;
+    height: 240px;
+    position: relative;
+    display: block;
+}
+#owl-demo .tut:hover .er {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+#owl-demo span.tut .er {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease
+}
+#owl-demo span.tut{
+    overflow: hidden
+}

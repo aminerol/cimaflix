@@ -1,0 +1,72 @@
+<div class="container">
+  <ul class="breadcrumb-arrow">
+    <li>
+      <a routerLink="/">الرئيسية</a>
+    </li>
+    <li>
+      <a routerLink="/مسلسلات">المسلسلات</a>
+    </li>
+    <li>
+      <a [routerLink]="['/مسلسل', 'البيت-الكبير']">البيت الكبير</a>
+    </li>
+    <li>
+      <a routerLink="#">الموسم 1</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="card text-white bg-dark">
+        <div class="card-header">
+          <h1 class="mb-0">شاهد مسلسل البيت الكبير الموسم 1</h1>
+        </div>
+        <div class="card-body bg-white text-dark">
+          <div class="row">
+            <div class="col-sm-3">
+              <img class="img-fluid" alt="grey's anatomy" title="grey's anatomy" src="assets/imgs/poster.jpg">
+            </div>
+            <div class="col-sm-9">
+              <h2 class="text-center">معلومات حول المسلسل :</h2>
+              <div>
+                <p class="mb-1">
+                  <strong>النوع : </strong>
+                  <a class="badge badge-info mr-1">اكشن</a>
+                  <a class="badge badge-info mr-1">مغامرة</a>
+                </p>
+                <p class="mb-1">
+                  <strong>السنة : </strong> 2005</p>
+                <p class="mb-1">
+                  <strong>الممثلين : </strong>خالد ارغنش, مريم أوزيرلي, نور فتاح اوغلو, اوكان يالبيك</p>
+                <p class="mb-1">
+                  <strong>عدد المشاهدات : </strong>99999</p>
+                <p class="mb-1">
+                  <strong>التقييم : </strong>8.07</p>
+              </div>
+              <h3 class="text-center">ملخص المسلسل :</h3>
+              <p>يروي المسلسل التاريخي "حريم السلطان" في تصوير درامي قصة حياة السلطان سليمان القانوني الذي حكم الدولة العثمانية في فترتها الذهبية من سنة 1520 ميلادية وحتى وفاته سنة 1566 ميلادية . ويعتبر أهم حاكم في تاريخ الدولة العثمانية. تدور أحداث المسلسل التاريخي "حريم السلطان" خلال فترة القرن السادس عشر، ويستعرض الأحداث التي تجري في مقر حريم السلطان المعروف (بالحرملك السلطاني).</p>
+              <div class="row">
+                <div class="col-sm-3 pb-2">
+                  <a class="btn btn-block btn-seaseon" [routerLink]="['/الحلقة', 'حريم-السلطان-موسم-1-الحلقة-1']" href="https://tv.seriestreaming.site/grey-s-anatomy/saison/1">الحلقة 1</a>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+          <p>
+              <i class="glyphicon glyphicon-tags mr-2"></i>مقالات بحاجة لتحرير حبكة القصةسليمان القانونيمسلسلات تلفزيونية إنتاج 2010مسلسلات تلفزيونية تركية انتهت في 2014مسلسلات تلفزيونية تركية انتهت في عقد 2010مسلسلات تلفزيونية تركية بدأ عرضها في 2011مسلسلات تلفزيونية تركية بدأ عرضها في عقد 2010مسلسلات تلفزيونية تركية دبلجت للعربيةمسلسلات تلفزيونية تركية لسنة 2010مسلسلات تلفزيونية درامية تركيةمسلسلات تلفزيونية درامية تركية في باكستانمسلسلات تلفزيونية عن الدولة العثمانيةمسلسلات دراما متسلسلة, مسلسلات تلفزيونية تقع أحداثها في القرن </p>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="list-group">
+        <div class="list-group-item bg-dark text-white">
+          <span class="glyphicon glyphicon-stats mr-2"></span>  مواسم البيت الكبير :
+        </div>
+        <a [routerLink]="['/موسم', 'حريم-السلطان-موسم-1']" class="list-group-item list-group-item-action" title="Grey's Anatomy Saison 2">
+          <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>البيت الكبير الموسم 1</a>
+      </div>
+    </div>
+  </div>
+</div>
