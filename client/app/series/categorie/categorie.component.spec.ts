@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RamadnComponent } from './ramadn.component';
+import { CategorieComponent } from './categorie.component';
 
-describe('RamadnComponent', () => {
-  let component: RamadnComponent;
-  let fixture: ComponentFixture<RamadnComponent>;
+describe('CategorieComponent', () => {
+  let component: CategorieComponent;
+  let fixture: ComponentFixture<CategorieComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RamadnComponent ]
+      declarations: [ CategorieComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RamadnComponent);
+    fixture = TestBed.createComponent(CategorieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

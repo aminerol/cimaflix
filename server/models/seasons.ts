@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export interface ISeason {
-  serie: any;
+  serieid: any;
   slug: String;
   hash: String;
   number: Number;
@@ -10,7 +10,7 @@ export interface ISeason {
 };
 
 const SeasonSchema = new mongoose.Schema({
-  serie: {
+  serieid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Serie'
   },

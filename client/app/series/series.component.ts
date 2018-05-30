@@ -1,39 +1,27 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { SeriesService } from './series.service';
+import { Category } from '../models/categorie';
+import { environment } from '../../environments/environment'
 
 @Component({
   selector: '',
   templateUrl: './series.component.html',
   styleUrls: ['./series.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeriesComponent implements OnInit {
 
-  @Input('data') series: any[] = [];
-  p: number = 1;
-  total: number;
-  loading: boolean;
+  categories: Category[] = [];
 
-  constructor(private _homeService: SeriesService) {
+  constructor(private _serieService: SeriesService) {
 
   }
 
   ngOnInit() {
-    this.getPage(1);
-  }
-
-  getPage(page: number) {
-    this.loading = true;
-      this._homeService.getSeries(page).subscribe(
-        data => {
-          this.total = data.length;
-          this.p = page;
-          this.loading = false;
-          for (let i = 0; i < data.length; i++) {
-            this.series.push(data[i]);
-          }
-        }
-      )
+    this.categories = environment.categories;
+    for(let categorie of this.categories){
+      this._serieService.getSeries(categorie.catId).subscribe( data => 
+        categorie.series = data.items);
+    }  
   }
 
 }

@@ -96,7 +96,7 @@ app.use((req, res) => {
 export default app;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/test', { useMongoClient: true})
+mongoose.connect('mongodb://localhost/voirflix', { useMongoClient: true})
   .then( () => {
     console.log('MongoDB connected');
   })

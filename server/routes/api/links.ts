@@ -7,13 +7,13 @@ const models = require('require-all')({
 });
 const model = models['links'].default;
 
-crudRouter.route('/links/get').get((req, res) => {
-  
-  model.find((err, ms) => {
+crudRouter.route('/:episodeid/links/get').get((req, res) => {
+
+  model.find({ episodeid: req.params.episodeid }).exec((err, ms) => {
     if (err) {
       res.json({ error: err });
     } else {
-      res.json(ms);
+      res.json({ items: ms });
     }
   });
 });

@@ -1,14 +1,14 @@
 import * as mongoose from 'mongoose';
 
 export interface ILink {
-  episode: any;
+  episodeid: any;
   host: String;
   url: String;
   date: Date;
 };
 
 const LinkSchema = new mongoose.Schema({
-  episode: {
+  episodeid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Episode'
   },

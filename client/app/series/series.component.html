@@ -4,22 +4,21 @@
       <a routerLink="/">الرئيسية</a>
     </li>
     <li>
-      <a routerLink="/">المسلسلات</a>
+      <a routerLink="#">المسلسلات</a>
     </li>
   </ul>
 </div>
 
-<!-- Last All Series !-->
-<div class="container">
+<!-- Last All Series   !-->
+<div class="container" *ngFor="let category of categories">
   <div class="promo-group-header">
-    <h3 class="promo-group-header__title">المسلسلات الاكثر مشاهدة</h3>
+    <a class="btn btn-default btn-xs" [routerLink]="['/', category.slug]">تصفح الكل</a>
+    <h3 class="promo-group-header__title">{{category.name}}</h3>
   </div>
-</div>
-<div class="container">
   <ul id="boxoffice" class="iconB">
-    <li *ngFor="let serie of series | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+    <li *ngFor="let serie of category.series">
       <div class="image">
-        <a [routerLink]="['/مسلسل', serie.slug]" title="{{serie.title}}">
+        <a [routerLink]="['/', category.slug, serie.slug]" title="{{serie.title}}">
           <span class="tut">
             <img src="{{serie.poster}}" class="er" alt="{{serie.title}} مشاهدة" title="{{serie.title}}"> </span>
         </a>
@@ -29,8 +28,4 @@
       </div>
     </li>
   </ul>
-  <div class="has-text-centered">
-    <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
-    <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-  </div>
 </div>

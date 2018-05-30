@@ -1,8 +1,8 @@
 import * as mongoose from 'mongoose';
 
 export interface IEpisode {
-  serie: any;
-  season: any;
+  serieid: any;
+  seasonid: any;
   slug: String;
   hash: String;
   number: Number;
@@ -11,11 +11,11 @@ export interface IEpisode {
 };
 
 const EpisodeSchema = new mongoose.Schema({
-  serie: {
+  serieid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Serie'
   },
-  season: {
+  seasonid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Season'
   },

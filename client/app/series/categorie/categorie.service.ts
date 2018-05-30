@@ -4,13 +4,13 @@ import {Observable} from 'rxjs/Rx'
 import "rxjs/add/operator/map";
 
 @Injectable()
-export class SeriesService {
+export class CategorieService {
 
   constructor(private _http: Http) {
   }
 
-  getSeries(catid: Number) {
-    return this._http.get('http://localhost:4200/api/categories/get/'+catid).map(res => res.json());
+  getSerieOfCategorie(page: number, catid: Number) {
+    return this._http.get('http://localhost:4200/api/series/get/'+catid+'/'+page).map(res => res.json());
   }
 
 }

@@ -7,22 +7,25 @@
       <a routerLink="/مسلسلات">المسلسلات</a>
     </li>
     <li>
-      <a routerLink="#">البيت الكبير</a>
+      <a [routerLink]="['/', categorie.slug]">{{categorie.name}}</a>
+    </li>
+    <li>
+      <a routerLink="#">{{serie?.title}}</a>
     </li>
   </ul>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="serie">
   <div class="row">
     <div class="col-sm-9">
       <div class="card text-white bg-dark">
         <div class="card-header">
-          <h1 class="mb-0">شاهد مسلسل البيت الكبير بدون تقطيع</h1>
+          <h1 class="mb-0">شاهد مسلسل {{serie.title}} بدون تقطيع</h1>
         </div>
         <div class="card-body bg-white text-dark">
           <div class="row">
             <div class="col-sm-3">
-              <img class="img-fluid" alt="grey's anatomy" title="grey's anatomy" src="assets/imgs/poster.jpg">
+              <img class="img-fluid" alt="{{serie.title}}" title="{{serie.title}}" src="{{serie.poster}}" width="177" height="240">
             </div>
             <div class="col-sm-9">
               <h2 class="text-center">معلومات حول المسلسل</h2>
@@ -33,33 +36,26 @@
                   <a class="badge badge-info mr-1">مغامرة</a>
                 </p>
                 <p class="mb-1">
-                  <strong>السنة : </strong> 2005</p>
+                  <strong>السنة : </strong> {{serie.year}}</p>
                 <p class="mb-1">
-                  <strong>الممثلين : </strong>خالد ارغنش, مريم أوزيرلي, نور فتاح اوغلو, اوكان يالبيك</p>
+                  <strong>الممثلين : </strong>{{serie.actors}}</p>
                 <p class="mb-1">
-                  <strong>عدد المشاهدات : </strong>99999</p>
+                  <strong>عدد المشاهدات : </strong>{{serie.views}}</p>
                 <p class="mb-1">
-                  <strong>التقييم : </strong>8.07</p>
+                  <strong>التقييم : </strong>{{serie.rate}}</p>
               </div>
               <h3 class="text-center">ملخص المسلسل :</h3>
-              <p>يروي المسلسل التاريخي "حريم السلطان" في تصوير درامي قصة حياة السلطان سليمان القانوني الذي حكم الدولة العثمانية
-                في فترتها الذهبية من سنة 1520 ميلادية وحتى وفاته سنة 1566 ميلادية . ويعتبر أهم حاكم في تاريخ الدولة العثمانية.
-                تدور أحداث المسلسل التاريخي "حريم السلطان" خلال فترة القرن السادس عشر، ويستعرض الأحداث التي تجري في مقر حريم
-                السلطان المعروف (بالحرملك السلطاني).</p>
+              <p>{{serie.sypnosis}}</p>
               <div class="row">
-                <div class="col-sm-3 pb-2">
-                  <a class="btn btn-block btn-seaseon" [routerLink]="['/موسم', 'حريم-السلطان-موسم-1']">الموسم 1</a>
+                <div class="col-sm-3 pb-2" *ngFor="let season of seasons">
+                  <a class="btn btn-block btn-seaseon" [routerLink]="['/', categorie.slug, serie.slug, season.slug]">الموسم {{season.number}}</a>
                 </div>
               </div>
               <br>
             </div>
           </div>
           <p>
-            <i class="glyphicon glyphicon-tags mr-2"></i>مقالات بحاجة لتحرير حبكة القصةسليمان القانونيمسلسلات تلفزيونية إنتاج 2010مسلسلات تلفزيونية تركية انتهت في
-            2014مسلسلات تلفزيونية تركية انتهت في عقد 2010مسلسلات تلفزيونية تركية بدأ عرضها في 2011مسلسلات تلفزيونية تركية
-            بدأ عرضها في عقد 2010مسلسلات تلفزيونية تركية دبلجت للعربيةمسلسلات تلفزيونية تركية لسنة 2010مسلسلات تلفزيونية
-            درامية تركيةمسلسلات تلفزيونية درامية تركية في باكستانمسلسلات تلفزيونية عن الدولة العثمانيةمسلسلات دراما متسلسلة,
-            مسلسلات تلفزيونية تقع أحداثها في القرن </p>
+            <i class="glyphicon glyphicon-tags mr-2"></i>{{tags}}</p>
         </div>
       </div>
     </div>
@@ -68,8 +64,8 @@
         <div class="list-group-item bg-dark text-white">
           <span class="glyphicon glyphicon-stats mr-2"></span> مسلسلات ذات صلة:
         </div>
-        <a [routerLink]="['/مسلسل', 'ماوي-و-الحب']" class="list-group-item list-group-item-action" title="Preuve lappui">
-          <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>ماوي و الحب</a>
+        <a [routerLink]="['/', categorie.slug, se.slug]" class="list-group-item list-group-item-action" title="شاهد مسلسل {{serie.title}}" *ngFor="let se of series">
+          <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>{{se.title}}</a>
       </div>
     </div>
   </div>

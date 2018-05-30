@@ -5,28 +5,28 @@ const models = require('require-all')({
   dirname: __dirname + '/../../models',
   filter: /^([^\.].*)\.(ts|js)$/
 });
-const model = models['episodes'].default;
+const model = models['seasons'].default;
 
-crudRouter.route('/episodes/get').get((req, res) => {
-  
-  model.find((err, ms) => {
+crudRouter.route('/:serieid/seasons/get').get((req, res) => {
+
+  model.find({ serieid: req.params.serieid}).exec((err, ms) => {
     if (err) {
       res.json({ error: err });
     } else {
-      res.json(ms);
+      res.json({items: ms});
     }
   });
 });
 
 
-crudRouter.route('/episodes/post').post((req, res) => {
+crudRouter.route('/seasons/post').post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);
-  m.save((err) => {
+  m.save((err, ms) => {
     if (err) {
       res.json({ error: err });
     } else {
-      res.json(m);
+      res.json({items: ms});
     }
   });
 })

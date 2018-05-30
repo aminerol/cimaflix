@@ -10,13 +10,13 @@ import { FileListComponent } from './demo/upload-file/file-list/file-list.compon
 
 import { SeriesComponent } from './series/series.component';
 import { FilmsComponent } from './films/films.component';
+import { CategorieComponent } from './series/categorie/categorie.component';
 
 import { SerieComponent } from './series/serie/serie.component';
 import { SeasonComponent } from './series/season/season.component';
 import { EpisodeComponent } from './series/episode/episode.component';
 
 import { FilmComponent } from './films/film/film.component';
-import { RamadnComponent } from './ramadn/ramadn.component';
 
 const appRoutes: Routes = [
   {
@@ -24,48 +24,28 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'posts',
-    component: PostsComponent
-  },
-  {
-    path: 'chat',
-    component: ChatComponent
-  },
-  {
-    path: 'form',
-    component: HeroFormComponent
-  },
-  {
-    path: 'upload-file',
-    component: UploadFileComponent
-  },
-  {
-    path: 'file-list',
-    component: FileListComponent
-  },
-  {
     path: 'مسلسلات',
     component: SeriesComponent
-  },
-  {
-    path: 'مسلسلات-رمضان',
-    component: RamadnComponent
   },
   {
     path: 'افلام',
     component: FilmsComponent
   },
+  {
+    path: ':slug',
+    component: CategorieComponent
+  },
 
   {
-    path: 'مسلسل/:slug',
+    path: ':catslug/:serieslug',
     component: SerieComponent
   },
   {
-    path: 'موسم/:slug',
+    path: ':catslug/:serieslug/:seasonslug',
     component: SeasonComponent
   },
   {
-    path: 'الحلقة/:slug',
+    path: ':catslug/:serieslug/:seasonslug/:episodeslug',
     component: EpisodeComponent
   },
   {

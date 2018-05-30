@@ -7,25 +7,49 @@ const models = require('require-all')({
 });
 const model = models['series'].default;
 
-crudRouter.route('/series/get/:page').get((req, res) => {
 
-  var perPage = 9
+crudRouter.route('/series/get/:catid/:page').get((req, res) => {
+
+  var perPage = 6*5
   var page = req.params.page || 1
+  var catid = req.params.catid
 
   model
-    .find({})
+    .find({ type: catid })
     .skip((perPage * page) - perPage)
     .limit(perPage)
     .exec(function (err, ms) {
-      model.count().exec(function (err, count) {
+      model.find({ type: catid }).count().exec(function (err, count) {
         if (err) {
           res.json({ error: err });
         } else {
-          res.json(ms);
+          res.json({items: ms, total: count});
         }
       });
     });
 });
+
+crudRouter.route('/serie/:catid/:slug/get').get((req, res) => {
+    model
+      .find({ slug: req.params.slug }).limit(1)
+      .exec(function (err, ms) {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json({items: ms});
+        }
+      });
+  });
+
+  crudRouter.route('/:catid/:serieid/releated/get').get((req, res) => {
+    model.find({ type: req.params.catid}, {slug: 1, title: 1}).limit(10).exec(function (err, series) {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({items: series});
+      }
+    });
+  });
 
 
 crudRouter.route('/series/post').post((req, res) => {

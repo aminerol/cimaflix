@@ -12,21 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SeriesComponent } from './series/series.component';
 import { FilmsComponent } from './films/films.component';
+import { CategorieComponent } from './series/categorie/categorie.component';
+
 import { SerieComponent } from './series/serie/serie.component';
 import { SeasonComponent } from './series/season/season.component';
 import { EpisodeComponent } from './series/episode/episode.component';
 import { FilmComponent } from './films/film/film.component';
-import { RamadnComponent } from './ramadn/ramadn.component';
 
 import { SeriesService } from './series/series.service'
+import { CategorieService } from './series/categorie/categorie.service'
+import { SerieService } from './series/serie/serie.service'
 
-import { PostsComponent } from './demo/posts/posts.component';
-import { PostsService } from './demo/posts/posts.service';
-import { ChatComponent } from './demo/chat/chat.component';
-import { HeroFormComponent } from './demo/form/hero-form.component';
-import { UploadFileComponent } from './demo/upload-file/upload-file/upload-file.component';
-import { FileListComponent } from './demo/upload-file/file-list/file-list.component';
-import { FileListService } from './demo/upload-file/file-list/file-list.service';
 
 const config = {
   apiKey: 'AIzaSyAT_uz_TBSay3NJwkyfuvEq7pRxZptZfL0',
@@ -41,19 +37,16 @@ const config = {
   declarations: [
     AppComponent,
     HomeComponent,
-    PostsComponent,
-    ChatComponent,
-    HeroFormComponent,
-    UploadFileComponent,
-    FileListComponent,
 
     SeriesComponent,
     FilmsComponent,
+    CategorieComponent,
+
     SerieComponent,
     SeasonComponent,
     EpisodeComponent,
     FilmComponent,
-    RamadnComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -64,9 +57,9 @@ const config = {
     NgxPaginationModule
   ],
   providers: [
-    PostsService,
-    FileListService,
-    SeriesService
+    SeriesService,
+    CategorieService,
+    SerieService
   ],
   bootstrap: [AppComponent]
 })
