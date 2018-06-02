@@ -1,29 +1,22 @@
 import * as mongoose from 'mongoose';
+import { LinkSchema, ILink } from './links';
 
 export interface IEpisode {
-  serieid: any;
-  seasonid: any;
   slug: String;
   hash: String;
   number: Number;
   views: Number;
   date: Date;
+  links: ILink[]
 };
 
-const EpisodeSchema = new mongoose.Schema({
-  serieid: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Serie'
-  },
-  seasonid: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Season'
-  },
+export const EpisodeSchema = new mongoose.Schema({
   slug: String,
   hash: String,
   number: Number,
   views: Number,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  links: [LinkSchema]
 });
 
 interface IEpisodeModel extends IEpisode, mongoose.Document { }

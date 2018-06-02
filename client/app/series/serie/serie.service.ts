@@ -25,8 +25,8 @@ export class SerieService {
     return this._http.get('http://localhost:4200/api/'+episodeid+'/links/get').map(res => res.json());
   }
 
-  getReleatedSeries(serieid: String, catid: Number) {
-    return this._http.get('http://localhost:4200/api/'+catid+'/'+serieid+'/releated/get').map(res => res.json());
+  getReleatedSeries(catid: Number) {
+    return this._http.get('http://localhost:4200/api/'+catid+'/releated/get').map(res => res.json());
   }
 
 }

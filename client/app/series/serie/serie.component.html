@@ -31,10 +31,7 @@
               <h2 class="text-center">معلومات حول المسلسل</h2>
               <div>
                 <p class="mb-1">
-                  <strong>النوع : </strong>
-                  <a class="badge badge-info mr-1">اكشن</a>
-                  <a class="badge badge-info mr-1">مغامرة</a>
-                </p>
+                  <strong>النوع : </strong> {{serie.genre}}</p>
                 <p class="mb-1">
                   <strong>السنة : </strong> {{serie.year}}</p>
                 <p class="mb-1">
@@ -47,7 +44,7 @@
               <h3 class="text-center">ملخص المسلسل :</h3>
               <p>{{serie.sypnosis}}</p>
               <div class="row">
-                <div class="col-sm-3 pb-2" *ngFor="let season of seasons">
+                <div class="col-sm-3 pb-2" *ngFor="let season of serie.seasons">
                   <a class="btn btn-block btn-seaseon" [routerLink]="['/', categorie.slug, serie.slug, season.slug]">الموسم {{season.number}}</a>
                 </div>
               </div>

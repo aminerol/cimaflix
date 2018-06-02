@@ -56,10 +56,7 @@
                   <h2 class="text-center">معلومات حول المسلسل :</h2>
                   <div>
                     <p class="mb-1">
-                      <strong>النوع : </strong>
-                      <a class="badge badge-info mr-1">اكشن</a>
-                      <a class="badge badge-info mr-1">مغامرة</a>
-                    </p>
+                      <strong>النوع : </strong> {{serie.genre}}</p>
                     <p class="mb-1">
                       <strong>السنة : </strong> {{serie.year}}</p>
                     <p class="mb-1">
@@ -73,7 +70,7 @@
                   <p>{{serie.sypnosis}}</p>
                 <div class="row">
             </div>
-            <div class="position-relative mb-2 watch" data-id="1805111" id="player">
+            <div class="position-relative mb-2 watch" id="player" #player (click)="LoadIframeInit()">
               <div class="loader2"></div>
               <div class="bwac-btn">
                 <i class="glyphicon glyphicon-play"></i>
@@ -85,11 +82,13 @@
               <tbody>
                 <tr *ngFor="let link of links">
                   <td class="font-weight-bold" style="width: 1%" nowrap="">
-                    <i class="glyphicon glyphicon-play-circle"></i> رابط سريع :</td>
+                    <i class="glyphicon glyphicon-play-circle"></i> رابط سريع :
+                  </td>
                   <td class="font-weight-bold">
-                    <img src="https://tv.seriestreaming.site/hosts/upvid.co.png" alt="upvid.co" class="mr-1" width="16" height="16">{{link.host}}</td>
+                    <img src="https://www.google.com/s2/favicons?domain={{link.host}}" alt="{{link.host}}" class="mr-1" width="16" height="16" />{{link.host}}
+                  </td>
                   <td style="width: 1%">
-                    <button class="btn btn-sm watch btn-seaseon" data-id="{{link._id}}">
+                    <button class="btn btn-sm watch btn-seaseon" (click)="LoadIframe(link)">
                       <i class="glyphicon glyphicon-play mr-2"></i>شاهد</button>
                   </td>
                 </tr>

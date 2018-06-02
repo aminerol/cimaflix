@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { ISeason, SeasonSchema } from './seasons';
 
 export interface ISerie {
   title: String;
@@ -13,6 +14,7 @@ export interface ISerie {
   rate: Number;
   type: Number;
   date: Date;
+  seasons: ISeason[];
 };
 
 const serieSchema = new mongoose.Schema({
@@ -27,7 +29,8 @@ const serieSchema = new mongoose.Schema({
   actors: String,
   rate: Number,
   type: Number,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  seasons: [SeasonSchema]
 });
 
 interface ISerieModel extends ISerie, mongoose.Document { }
