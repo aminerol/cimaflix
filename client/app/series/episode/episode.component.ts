@@ -40,8 +40,8 @@ export class EpisodeComponent implements OnInit, AfterViewInit {
     this._route.paramMap.subscribe(param => {
 
       if(this.player){
-      this.player.nativeElement.innerHTML = '<div class="loader2"></div><div class="bwac-btn"><i class="glyphicon glyphicon-play"></i></div>';      
-    }
+        this.player.nativeElement.innerHTML = '<div class="loader2"></div><div class="bwac-btn"><i class="glyphicon glyphicon-play"></i></div>';      
+      }
 
       this.serieslug = param.get('serieslug');
       this.catslug = param.get('catslug');
@@ -54,11 +54,17 @@ export class EpisodeComponent implements OnInit, AfterViewInit {
       this._serieService.getSerieInfo(this.serieslug, this.categorie.catId).subscribe(data =>{
         this.serie = data.items[0];
 
-        this.seasons = this.serie.seasons;
-        this.season = this.seasons.find(se => se.slug == this.seasonslug);
-        this.episodes = this.season.episodes;
-        this.episode = this.episodes.find(ep => ep.slug == this.episodeslug);
-        this.links = this.episode.links;
+        this._serieService.getSerieSeasons(this.serie._id).subscribe(data => { 
+          this.seasons = data.items; 
+          this.season = this.seasons.find(se => se.slug == this.seasonslug); 
+          this._serieService.getSerieEpisodes(this.serie._id, this.season._id).subscribe(data => { 
+            this.episodes = data.items; 
+            this.episode = this.episodes.find(ep => ep.slug == this.episodeslug); 
+            this._serieService.getEpisodeLinks(this.episode._id).subscribe(data => { 
+              this.links = data.items; 
+            }); 
+          }); 
+        }); 
       });
 
     });

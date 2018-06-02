@@ -1,22 +1,24 @@
 import * as mongoose from 'mongoose';
-import { EpisodeSchema, IEpisode } from './episodes';
 
 export interface ISeason {
+  serieid: any; 
   slug: String;
   hash: String;
   number: Number;
   views: Number;
   date: Date;
-  episodes: IEpisode[];
 };
 
 export const SeasonSchema = new mongoose.Schema({
+  serieid: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Serie' 
+  },
   slug: String,
   hash: String,
   number: Number,
   views: Number,
   date: { type: Date, default: Date.now },
-  episodes: [EpisodeSchema]
 });
 
 interface ISeasonModel extends ISeason, mongoose.Document { }

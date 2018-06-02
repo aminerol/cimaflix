@@ -1,12 +1,17 @@
 import * as mongoose from 'mongoose';
 
 export interface ILink {
+  episodeid: any; 
   host: String;
   url: String;
   date: Date;
 };
 
 export const LinkSchema = new mongoose.Schema({
+  episodeid: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Episode' 
+  }, 
   host: String,
   url: String,
   date: { type: Date, default: Date.now }
