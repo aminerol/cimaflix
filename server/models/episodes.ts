@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface IEpisode {
   seasonid: any; 
+  serieid: any; 
   slug: String;
   hash: String;
   number: Number;
@@ -13,6 +14,10 @@ export const EpisodeSchema = new mongoose.Schema({
   seasonid: { 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Season' 
+  },
+  serieid: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Serie' 
   },
   slug: String,
   hash: String,

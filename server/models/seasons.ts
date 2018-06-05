@@ -5,7 +5,6 @@ export interface ISeason {
   slug: String;
   hash: String;
   number: Number;
-  views: Number;
   date: Date;
 };
 
@@ -17,7 +16,6 @@ export const SeasonSchema = new mongoose.Schema({
   slug: String,
   hash: String,
   number: Number,
-  views: Number,
   date: { type: Date, default: Date.now },
 });
 

@@ -7,9 +7,9 @@ const models = require('require-all')({
 });
 const model = models['episodes'].default;
 
-crudRouter.route('/:serieid/:seasonid/episodes/get').get((req, res) => {
+crudRouter.route('/:seasonid/episodes/get').get((req, res) => {
 
-  model.find({ serieid: req.params.serieid, seasonid: req.params.seasonid }).exec((err, ms) => {
+  model.find({ seasonid: req.params.seasonid }).sort({ number: 1 }).exec((err, ms) => {
     if (err) {
       res.json({ error: err });
     } else {
@@ -18,14 +18,25 @@ crudRouter.route('/:serieid/:seasonid/episodes/get').get((req, res) => {
   });
 });
 
+
 crudRouter.route('/episodes/post').post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);
-  m.save((err) => {
-    if (err) {
-      res.json({ error: err });
-    } else {
-      res.json(m);
+  model.find({ slug: m.slug, serieid: m.serieid, seasonid: m.seasonid}).exec(function (err, docs) {
+    if (docs.length) {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json(docs);
+      }
+    }else{
+      m.save((err) => {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json(m);
+        }
+      });
     }
   });
 })

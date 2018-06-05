@@ -26,10 +26,10 @@ export class SerieComponent implements OnInit {
       var serieslug = param.get('serieslug');
       var catslug = param.get('catslug');
       this.categorie = environment.categories.find(cat => cat.slug == catslug);
-      this.tags = environment.serietags;
-
+      
       this._serieService.getSerieInfo(serieslug, this.categorie.catId).subscribe(data => { 
         this.serie = data.items[0]; 
+        this.tags = environment.serietags.replace(/{{serie.title}}/g, this.serie.title);
         Observable.forkJoin( 
           this._serieService.getReleatedSeries(this.categorie.catId), 
           this._serieService.getSerieSeasons(this.serie._id) 

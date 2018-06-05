@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OwlModule } from 'ngx-owl-carousel';
 
 import { FileUploadModule } from 'ng2-file-upload';
 
@@ -22,6 +23,7 @@ import { FilmComponent } from './films/film/film.component';
 import { SeriesService } from './series/series.service'
 import { CategorieService } from './series/categorie/categorie.service'
 import { SerieService } from './series/serie/serie.service'
+import { EpisodeService } from './series/episode/episode.service'
 
 
 const config = {
@@ -54,12 +56,14 @@ const config = {
     HttpModule,
     FileUploadModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    OwlModule
   ],
   providers: [
     SeriesService,
     CategorieService,
-    SerieService
+    SerieService,
+    EpisodeService
   ],
   bootstrap: [AppComponent]
 })

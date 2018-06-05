@@ -77,11 +77,21 @@ crudRouter.route('/:catid/releated/get').get((req, res) => {
 crudRouter.route('/series/post').post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);
-  m.save((err) => {
-    if (err) {
-      res.json({ error: err });
-    } else {
-      res.json(m);
+  model.find({ slug: m.slug}).exec(function (err, docs) {
+    if (docs.length) {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json(docs);
+      }
+    }else{
+      m.save((err) => {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json(m);
+        }
+      });
     }
   });
 })

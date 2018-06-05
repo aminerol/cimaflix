@@ -17,8 +17,8 @@ export class SerieService {
     return this._http.get('http://localhost:4200/api/'+serieid+'/seasons/get').map(res => res.json());
   }
 
-  getSerieEpisodes(serieid: String, seasonid: String) {
-    return this._http.get('http://localhost:4200/api/'+serieid+'/'+seasonid+'/episodes/get').map(res => res.json());
+  getSerieEpisodes(seasonid: String) { 
+    return this._http.get('http://localhost:4200/api/'+seasonid+'/episodes/get').map(res => res.json());
   }
 
   getEpisodeLinks(episodeid: String) {

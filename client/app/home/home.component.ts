@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { EpisodeService } from '../series/episode/episode.service';
+import { Category } from '../models/categorie';
+import { ILatestEpisode } from '../../../server/models/latestEpisodes';
 
 @Component({
   selector: '',
@@ -9,9 +12,31 @@ import 'rxjs/add/operator/map';
 })
 export class HomeComponent implements OnInit {
 
-  toDos: string[] =["Todo1","Todo2","Todo3","Todo1","Todo2","Todo3","Todo1","Todo2","Todo3","Todo1","Todo2","Todo3"];
+  popularEpisodes: ILatestEpisode[] = [];
+  latestEpisodes: ILatestEpisode[] = [];
+  catSlug: String;
+  currentpage: number = 1;
+  total: number;
+
+  constructor(private _episodeService: EpisodeService) {
+  }
 
   ngOnInit() {
+
+    this.getPage(1);
+    this._episodeService.getPopularEpisodes().subscribe(data => {
+      this.popularEpisodes = data.items;
+    })
+  }
+
+  getPage(page: number) {
+    this._episodeService.getLatestEpisodes(page).subscribe(
+      data => {
+        this.total = data.total;
+        this.latestEpisodes = data.items;
+        this.currentpage = page;
+      }
+    )
   }
 
 }

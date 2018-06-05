@@ -7,7 +7,6 @@ export interface ISerie {
   poster: String;
   sypnosis: String;
   year: Number;
-  views: Number;
   genre: String;
   actors: String;
   rate: Number;
@@ -22,7 +21,6 @@ const serieSchema = new mongoose.Schema({
   poster: String,
   sypnosis: String,
   year: Number,
-  views: Number,
   genre: String,
   actors: String,
   rate: Number,

@@ -22,11 +22,21 @@ crudRouter.route('/:serieid/seasons/get').get((req, res) => {
 crudRouter.route('/seasons/post').post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);
-  m.save((err, ms) => {
-    if (err) {
-      res.json({ error: err });
-    } else {
-      res.json({items: ms});
+  model.find({ slug: m.slug, serieid: m.serieid}).exec(function (err, docs) {
+    if (docs.length) {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json(docs);
+      }
+    }else{
+      m.save((err) => {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json(m);
+        }
+      });
     }
   });
 })

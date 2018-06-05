@@ -1,80 +1,126 @@
-
-<!-- Last Episodes Ramadan!-->
 <div class="container">
-  <div id="owl-demo">
-    <div class="item" *ngFor="let item of toDos">
+
+  <owl-carousel [options]="{items: 6, dots: true, navigation: true}" id="owl-demo" [items]="popularEpisodes" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+    <div class="item" *ngFor="let episode of popularEpisodes;let i = index">
       <div class="image">
-        <a [routerLink]="['/الحلقة', 'البيت-الكبير']">
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           <span class="tut">
-            <img src="assets/imgs/poster.jpg" alt="The Flash (2014) streaming" title="The Flash (2014) poster" class="er">
+            <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           </span>
           <span class="h2">
-            <span class="note">23</span>
+            <span class="note">{{episode.episodeNumber}}</span>
           </span>
         </a>
         <div class="wrt">
-          <p>البيت الكبير</p>
+          <p>{{episode.serieTitle}} الموسم {{episode.seasonNumber}}</p>
+        </div>
+      </div>
+    </div>
+  </owl-carousel>
+
+  <div id="owl-demo">
+    <div class="item" *ngFor="">
+      <div class="image">
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+          <span class="tut">
+            <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+          </span>
+          <span class="h2">
+            <span class="note">{{episode.episodeNumber}}</span>
+          </span>
+        </a>
+        <div class="wrt">
+          <p>{{episode.serieTitle}} الموسم {{episode.seasonNumber}}</p>
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>
 
 <!-- Last All Episodes !-->
 <div class="container">
-<div class="promo-group-header">
-  <h3 class="promo-group-header__title">آخر الحلقات المضافة</h3>
-</div>
+  <div class="promo-group-header">
+    <h3 class="promo-group-header__title">آخر الحلقات المضافة</h3>
+  </div>
 </div>
 <div class="container">
-<ul id="boxoffice" class="iconB">
-  <li *ngFor="let item of toDos">
+  <ul id="boxoffice" class="iconB">
+    <li *ngFor="let episode of latestEpisodes | paginate: { id: 'server', itemsPerPage: 30, currentPage: currentpage, totalItems: total }">
       <div class="image">
-          <a [routerLink]="['/الحلقة', 'البيت-الكبير']">
-              <span class="tut"> <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
-              <span class="h2">
-                <span class="note">23</span>
-              </span>
-          </a>
-          <div class="wrt">
-            <p>البيت الكبير</p>
-          </div>
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+          <span class="tut">
+            <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+          </span>
+          <span class="h2">
+            <span class="note">{{episode.episodeNumber}}</span>
+          </span>
+        </a>
+        <div class="wrt">
+          <p>{{episode.serieTitle}} الموسم {{episode.seasonNumber}}</p>
+        </div>
       </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>
+<div class="container">
+  <div class="has-text-centered">
+    <pagination-template #p="paginationApi" id="server" (pageChange)="getPage($event)" previousLabel="labels.previousLabel" nextLabel="labels.nextLabel">
+      <ul class="custom-pagination">
+        <li class="pagination-previous" [class.disabled]="p.isFirstPage()">
+          <a *ngIf="!p.isFirstPage()" (click)="p.previous()">
+          </a>
+        </li>
+
+        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+          <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+            <span>{{ page.label }}</span>
+          </a>
+          <div *ngIf="p.getCurrent() === page.value">
+            <span>{{ page.label }}</span>
+          </div>
+        </li>
+
+        <li class="pagination-next" [class.disabled]="p.isLastPage()">
+          <a *ngIf="!p.isLastPage()" (click)="p.next()"> </a>
+        </li>
+      </ul>
+    </pagination-template>
+  </div>
 </div>
 
 <!-- Last All Movies !-->
-<div class="container">
-<div class="promo-group-header">
-  <h3 class="promo-group-header__title">آخر الافلام المضافة</h3>
+<!-- <div class="container">
+  <div class="promo-group-header">
+    <h3 class="promo-group-header__title">آخر الافلام المضافة</h3>
+  </div>
 </div>
-</div>
 <div class="container">
-<ul id="boxoffice" class="iconB">
-  <li *ngFor="let item of toDos">
+  <ul id="boxoffice" class="iconB">
+    <li *ngFor="let item of toDos">
       <div class="image">
-          <a [routerLink]="['/فيلم', 'الاب-الروحى']">
-              <span class="tut"> <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
-              <span class="h2">
-                <span class="VO"></span><span class="qalite">HD</span>
-              </span>
-          </a>
-          <div class="wrt">
-            <p>الاب الروحى</p>
-          </div>
-          <p class="thetype">
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-            <b style="color:orange;" class="glyphicon glyphicon-star"></b>
-          </p>
+        <a [routerLink]="['/فيلم', 'الاب-الروحى']">
+          <span class="tut">
+            <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
+          <span class="h2">
+            <span class="VO"></span>
+            <span class="qalite">HD</span>
+          </span>
+        </a>
+        <div class="wrt">
+          <p>الاب الروحى</p>
+        </div>
+        <p class="thetype">
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+          <b style="color:orange;" class="glyphicon glyphicon-star"></b>
+        </p>
       </div>
-  </li>
-</ul>
-</div>
+    </li>
+  </ul>
+</div> -->

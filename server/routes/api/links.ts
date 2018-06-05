@@ -22,11 +22,21 @@ crudRouter.route('/:episodeid/links/get').get((req, res) => {
 crudRouter.route('/links/post').post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);
-  m.save((err) => {
-    if (err) {
-      res.json({ error: err });
-    } else {
-      res.json(m);
+  model.find({ episodeid: m.episodeid, url: m.url}).exec(function (err, docs) {
+    if (docs.length) {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json(docs);
+      }
+    }else{
+      m.save((err) => {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json(m);
+        }
+      });
     }
   });
 })

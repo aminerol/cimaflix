@@ -49,7 +49,6 @@ export class EpisodeComponent implements OnInit, AfterViewInit {
       this.episodeslug = param.get('episodeslug');
 
       this.categorie = environment.categories.find(cat => cat.slug == this.catslug);
-      this.tags = environment.episodetags;
       
       this._serieService.getSerieInfo(this.serieslug, this.categorie.catId).subscribe(data =>{
         this.serie = data.items[0];
@@ -57,9 +56,11 @@ export class EpisodeComponent implements OnInit, AfterViewInit {
         this._serieService.getSerieSeasons(this.serie._id).subscribe(data => { 
           this.seasons = data.items; 
           this.season = this.seasons.find(se => se.slug == this.seasonslug); 
-          this._serieService.getSerieEpisodes(this.serie._id, this.season._id).subscribe(data => { 
+          this._serieService.getSerieEpisodes(this.season._id).subscribe(data => { 
             this.episodes = data.items; 
-            this.episode = this.episodes.find(ep => ep.slug == this.episodeslug); 
+            this.episode = this.episodes.find(ep => ep.slug == this.episodeslug);
+            this.tags = environment.episodetags.replace(/{{serie.title}}/g, this.serie.title).replace(/{{season.number}}/g, this.season.number).replace(/{{episode.number}}/g, this.episode.number);
+            
             this._serieService.getEpisodeLinks(this.episode._id).subscribe(data => { 
               this.links = data.items; 
             }); 
