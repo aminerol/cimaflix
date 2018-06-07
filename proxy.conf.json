@@ -3,10 +3,10 @@
     "target": "http://localhost:3000",
     "secure": false
   },
-  "/dist/public/**": {
-    "target": "http://localhost:4200/",
+  "/**": {
+    "target": "http://localhost:4200/dist/public/",
     "pathRewrite": {
-      "^/dist/public": ""
+      "^/": "/dist/public/"
     }
   }
 }
