@@ -6,6 +6,7 @@
     "ng": "ng",
     "postinstall": "npm run build",
     "build": "rimraf dist && ng build --env=prod && tsc --project server/tsconfig.app.json",
+    "postbuild": "cpx \"dist/public/**\" ./",
     "start": "pm2 start dist/www.js --no-daemon",
     "build-start": "npm run build && npm start",
     "dev": "concurrently \"ng serve --progress false --proxy-config proxy.conf.json\" \"npm run api\" ",
@@ -82,6 +83,7 @@
     "protractor": "~5.1.0",
     "supertest": "^3.0.0",
     "ts-node": "~2.0.0",
-    "tslint": "~4.5.0"
+    "tslint": "~4.5.0",
+    "cpx": "1.5.0"
   }
 }
