@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http'
 import {Observable} from 'rxjs/Rx'
 import "rxjs/add/operator/map";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SeriesService {
@@ -10,7 +11,7 @@ export class SeriesService {
   }
 
   getSeries(catid: Number) {
-    return this._http.get('http://localhost:4200/api/categories/get/'+catid).map(res => res.json());
+    return this._http.get(environment.apiEndpoint+'categories/get/'+catid).map(res => res.json());
   }
 
 }

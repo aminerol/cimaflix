@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http'
 import {Observable} from 'rxjs/Rx'
 import "rxjs/add/operator/map";
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class EpisodeService {
@@ -10,11 +11,11 @@ export class EpisodeService {
   }
 
   getPopularEpisodes(){
-    return this._http.get('http://localhost:4200/api/episodes/popular/get/').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+'episodes/popular/get/').map(res => res.json());
   }
 
   getLatestEpisodes(page: Number){
-    return this._http.get('http://localhost:4200/api/episodes/get/'+page).map(res => res.json());
+    return this._http.get(environment.apiEndpoint+'episodes/get/'+page).map(res => res.json());
   }
 
 }

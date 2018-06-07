@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http'
 import {Observable} from 'rxjs/Rx'
 import "rxjs/add/operator/map";
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class SerieService {
@@ -10,23 +11,23 @@ export class SerieService {
   }
 
   getSerieInfo(slug: String, catid: Number) {
-    return this._http.get('http://localhost:4200/api/serie/'+catid+'/'+slug+'/get').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+'serie/'+catid+'/'+slug+'/get').map(res => res.json());
   }
 
   getSerieSeasons(serieid: String) {
-    return this._http.get('http://localhost:4200/api/'+serieid+'/seasons/get').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+''+serieid+'/seasons/get').map(res => res.json());
   }
 
   getSerieEpisodes(seasonid: String) { 
-    return this._http.get('http://localhost:4200/api/'+seasonid+'/episodes/get').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+''+seasonid+'/episodes/get').map(res => res.json());
   }
 
   getEpisodeLinks(episodeid: String) {
-    return this._http.get('http://localhost:4200/api/'+episodeid+'/links/get').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+''+episodeid+'/links/get').map(res => res.json());
   }
 
   getReleatedSeries(catid: Number) {
-    return this._http.get('http://localhost:4200/api/'+catid+'/releated/get').map(res => res.json());
+    return this._http.get(environment.apiEndpoint+''+catid+'/releated/get').map(res => res.json());
   }
 
 }
