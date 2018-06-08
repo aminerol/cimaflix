@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://cimaflix.cf",
+    "target": "http://localhost:3000",
     "secure": false
   }
 }

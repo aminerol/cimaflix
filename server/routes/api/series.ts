@@ -30,7 +30,9 @@ crudRouter.route('/categories/get/:catid').get((req, res) => {
 // return count and series from given category with pagination
 crudRouter.route('/series/get/:catid/:page').get((req, res) => {
 
-  var perPage = 6 * 5
+  res.json({ succes: 'DONE' });
+
+  /*var perPage = 6 * 5
   var page = req.params.page || 1
   var catid = req.params.catid
 
@@ -46,7 +48,7 @@ crudRouter.route('/series/get/:catid/:page').get((req, res) => {
           res.json({ items: ms, total: count });
         }
       });
-    });
+    });*/
 });
 
 // return all info and seasons and episodes of a serie
