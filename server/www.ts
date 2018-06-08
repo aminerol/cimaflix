@@ -6,7 +6,7 @@ import app from './app';
 const debug = debugModule('express-start:server');
 
 // Get port from environment and store in Express.
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 // create server and listen on provided port (on all network interfaces).
