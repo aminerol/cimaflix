@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const crudRouter = Router();
 const models = require('require-all')({
-  dirname: __dirname + '/../../models',
+  dirname: __dirname + '/../models',
   filter: /^([^\.].*)\.(ts|js)$/
 });
 const model = models['seasons'].default;
