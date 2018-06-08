@@ -9,7 +9,6 @@ const model = models['series'].default;
 
 //return count and only 12 serie from given categorie
 crudRouter.route('/categories/get/:catid').get((req, res) => {
-  console.log('sssss');
   var perPage = 12
   var catId = req.params.catid
 
