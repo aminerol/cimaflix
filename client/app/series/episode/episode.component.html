@@ -27,13 +27,13 @@
           <div class="list-group mb-3">
             <div class="bg-dark list-group-item text-white">
               <i class="glyphicon glyphicon-list mr-2" aria-hidden="true"></i>حلقات الموسم {{season.number}}</div>
-            <a [routerLink]="['/', categorie.slug, serie.slug, season.slug, ep.slug]" [ngClass]="{true: 'bg-warning text-dark'}[ep.slug == episodeslug]" class="list-group-item list-group-item-action"
+            <a [routerLink]="['/', categorie.slug, serie.slug, season.slug, ep.slug]" [ngClass]="{'bg-warning text-dark': ep.slug == episodeslug}" class="list-group-item list-group-item-action"
               title="{{serie.title}} الموسم {{season.number}} الحلقة {{ep.number}}" *ngFor="let ep of episodes">
               <i class="glyphicon glyphicon-play mr-2"></i>
               <span class="float-left d-none">Playing</span>الحلقة {{ep.number}}</a>
           </div>
           <div class="list-group">
-            <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{true: 'bg-warning text-dark'}[se.slug == seasonslug]" class="list-group-item list-group-item-action"
+            <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{'bg-warning text-dark': se.slug == seasonslug}" class="list-group-item list-group-item-action"
               title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
               <i class="glyphicon glyphicon-film mr-2"></i>الموسم {{se.number}}</a>
           </div>

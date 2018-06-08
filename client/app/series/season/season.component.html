@@ -63,7 +63,7 @@
         <div class="list-group-item bg-dark text-white">
           <span class="glyphicon glyphicon-stats mr-2"></span> مواسم {{serie.title}} :
         </div>
-        <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{true: 'bg-warning text-dark'}[se.slug == seasonslug]" class="list-group-item list-group-item-action" title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
+        <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{'bg-warning text-dark': se.slug == seasonslug}" class="list-group-item list-group-item-action" title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
           <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>{{serie.title}} الموسم {{se.number}}</a>
       </div>
     </div>

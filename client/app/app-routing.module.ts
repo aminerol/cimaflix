@@ -2,11 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { PostsComponent } from './demo/posts/posts.component';
-import { ChatComponent } from './demo/chat/chat.component';
-import { HeroFormComponent } from './demo/form/hero-form.component';
-import { UploadFileComponent } from './demo/upload-file/upload-file/upload-file.component';
-import { FileListComponent } from './demo/upload-file/file-list/file-list.component';
 
 import { SeriesComponent } from './series/series.component';
 import { FilmsComponent } from './films/films.component';
