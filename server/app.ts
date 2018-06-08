@@ -54,8 +54,7 @@ resolve('', routeModules);
 
 // Default to main page, angular route takes over
 app.use((req, res) => {
-  res.json({succes: 'done'});
-  //res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // // catch 404 and forward to error handler
