@@ -54,6 +54,7 @@ resolve('', routeModules);
 
 // Default to main page, angular route takes over
 app.use((req, res) => {
+  console.log(path.join(__dirname, 'public/index.html'));
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
