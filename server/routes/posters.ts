@@ -8,7 +8,7 @@ const imageFilter = function (req, file, cb) {
     }
     cb(null, true);
 };
-const UPLOAD_PATH = 'public/assets/posters';
+const UPLOAD_PATH = 'dist/public/assets/posters';
 const upload = multer({ dest: `${UPLOAD_PATH}/`, fileFilter: imageFilter });
 
 export default Router().post('/poster/post', upload.single('img'), uploadFile);
@@ -21,7 +21,8 @@ export default Router().post('/poster/post', upload.single('img'), uploadFile);
 export function uploadFile(req: Request, res: Response) {
     const file = req.file;
     // Set upload date
-    file['uploadDate'] = new Date();    
+    file['uploadDate'] = new Date();
+    file['filename'] = file.originalname;    
     // Send response
     res.json({file: file});
   };
