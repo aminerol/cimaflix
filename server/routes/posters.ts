@@ -8,15 +8,17 @@ const imageFilter = function (req, file, cb) {
     }
     cb(null, true);
 };
+
 const UPLOAD_PATH = 'dist/public/assets/posters';
-const storage = multer.diskStorage({
+var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, `${UPLOAD_PATH}/`)
+        cb(null, `${UPLOAD_PATH}/`)
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname)
+        let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
+        cb(null, file.originalname + ext)
     }
-  })
+});
 const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 export default Router().post('/poster/post', upload.single('img'), uploadFile);
@@ -30,7 +32,6 @@ export function uploadFile(req: Request, res: Response) {
     const file = req.file;
     // Set upload date
     file['uploadDate'] = new Date();
-    file['filename'] = file.originalname;    
     // Send response
     res.json({file: file});
   };
