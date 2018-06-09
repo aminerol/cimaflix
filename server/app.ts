@@ -94,7 +94,7 @@ app.use((req, res, next) => {
 export default app;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/cimaflix', { useMongoClient: true})
+mongoose.connect('mongodb://cimaflix:aminerol30@localhost:27017/cimaflix', { useMongoClient: true})
   .then( () => {
     console.log('MongoDB connected');
   })
