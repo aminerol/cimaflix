@@ -9,7 +9,15 @@ const imageFilter = function (req, file, cb) {
     cb(null, true);
 };
 const UPLOAD_PATH = 'dist/public/assets/posters';
-const upload = multer({ dest: `${UPLOAD_PATH}/`, fileFilter: imageFilter });
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `${UPLOAD_PATH}/`)
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  })
+const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 export default Router().post('/poster/post', upload.single('img'), uploadFile);
 
