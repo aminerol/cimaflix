@@ -9,7 +9,7 @@ const imageFilter = function (req, file, cb) {
     cb(null, true);
 };
 
-const UPLOAD_PATH = 'public/assets/posters';
+const UPLOAD_PATH = 'dist/public/assets/posters';
 const upload = multer({ dest: `${UPLOAD_PATH}/`, fileFilter: imageFilter });
 // var storage = multer.diskStorage({
 //     destination: function (req, file, cb) {
