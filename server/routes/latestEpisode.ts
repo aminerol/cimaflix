@@ -47,7 +47,7 @@ crudRouter.route('/episodes/latest/post').post((req, res) => {
       if (err) {
         res.json({ error: err });
       } else {
-        res.json(docs);
+        res.json(docs[0]);
       }
     }else{
       m.save((err) => {
