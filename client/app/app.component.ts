@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '';
+  private Searchtoggle : boolean = false;
+  private Menutoggle : boolean = false;
 
+  ToggleSearch(event){
+    this.Searchtoggle = !this.Searchtoggle;
+    console.log(this.Searchtoggle);   
+  }
+  ToggleMenu(event){
+    this.Menutoggle = !this.Menutoggle; 
+    console.log(this.Menutoggle);       
+  }
 }

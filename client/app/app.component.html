@@ -1,27 +1,59 @@
 <div id="topheader">
-  <div class="wrapper row">
-      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 position_rel">
-          <a routerLink="/" class="logo pull-right"></a>
-      </div>
-      <div id="custom_link" class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-          <ul>
-              <li>
-                <a routerLink="/مسلسلات">المسلسلات</a>
-              </li>
-              <!-- <li>
+    <div class="wrapper row">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 position_rel">
+            <a routerLink="/" class="logo pull-right"></a>
+            <div id="search-toggle" class="search_icon_mob" (click)="ToggleSearch($event)">
+                <i class="glyphicon glyphicon-search"></i>
+            </div>
+            <div id="menu-toggle" class="menu_icon_mob" (click)="ToggleMenu($event)">
+                <i class="glyphicon glyphicon-align-justify"></i>
+            </div>
+        </div>
+        <div id="custom_link" class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <ul>
+                <li>
+                    <a routerLink="/مسلسلات">المسلسلات</a>
+                </li>
+                <!-- <li>
                 <a routerLink="/افلام">الافلام</a>
               </li> -->
-          </ul>
-      </div>
-      <div id="search-dropper" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-          <div id="search">
-              <form method="POST" action="search">
-                  <input type="text" name="q" data-provide="typeahead" value="ابحث من هنا" class="form-control noshadow" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ابحث من هنا';}">
-                  <button name="btnG"><i class="glyphicon glyphicon-search"></i></button>
-              </form>
-          </div>
-      </div>
-      <div class="clear"></div>
-      </div>
-  </div>
+            </ul>
+        </div>
+        <div id="search-dropper" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" [ngClass]="{'toggled': Searchtoggle == true}">
+            <div id="search">
+                <form method="POST" action="search">
+                    <input type="text" name="q" data-provide="typeahead" value="ابحث من هنا" class="form-control noshadow" onfocus="this.value = '';"
+                        onblur="if (this.value == '') {this.value = 'ابحث من هنا';}">
+                    <button name="btnG">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div id="menu-dropper" class="col-xs-12 col-sm-12 col-md-5 col-lg-5" [ngClass]="{'toggled': Menutoggle == true}">
+            <div class="contents">
+                <div style="width:100%;">
+                    <div class="dimcol-xs-1 dimcol-sm-1 dimcol-md-1 p04 ">
+                        <div style="width:100%;">
+                            <div class="dimcol-xs-1 dimcol-sm-1 dimcol-md-1 p04 ">
+                                <div style="width:100%;">
+                                    <div class="dimcol-xs-1 dimcol-sm-1 dimcol-md-1 p04 ">
+                                        <a routerLink="/مسلسلات">جميع المسلسلات</a>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
 <router-outlet></router-outlet>
