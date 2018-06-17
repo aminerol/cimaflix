@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = '';
-  private Searchtoggle : boolean = false;
-  private Menutoggle : boolean = false;
+  Searchtoggle : boolean = false;
+  Menutoggle : boolean = false;
 
   ToggleSearch(event){
     this.Searchtoggle = !this.Searchtoggle;
