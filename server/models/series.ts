@@ -12,6 +12,7 @@ export interface ISerie {
   rate: Number;
   type: Number;
   date: Date;
+  
 };
 
 const serieSchema = new mongoose.Schema({

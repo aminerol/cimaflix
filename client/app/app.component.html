@@ -21,8 +21,8 @@
         </div>
         <div id="search-dropper" class="col-xs-12 col-sm-12 col-md-4 col-lg-4" [ngClass]="{'toggled': Searchtoggle == true}">
             <div id="search">
-                <form method="POST" action="search">
-                    <input type="text" name="q" data-provide="typeahead" value="ابحث من هنا" class="form-control noshadow" onfocus="this.value = '';"
+                <form method="POST" (ngSubmit)="onSubmit()">
+                    <input type="text" name="q" data-provide="typeahead" value="ابحث من هنا" class="form-control noshadow" [(ngModel)]="query"
                         onblur="if (this.value == '') {this.value = 'ابحث من هنا';}">
                     <button name="btnG">
                         <i class="glyphicon glyphicon-search"></i>

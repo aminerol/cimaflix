@@ -23,7 +23,8 @@ import { FilmComponent } from './films/film/film.component';
 import { SeriesService } from './series/series.service'
 import { CategorieService } from './series/categorie/categorie.service'
 import { SerieService } from './series/serie/serie.service'
-import { EpisodeService } from './series/episode/episode.service'
+import { EpisodeService } from './series/episode/episode.service';
+import { SearchComponent } from './search/search.component'
 
 
 const config = {
@@ -48,6 +49,7 @@ const config = {
     SeasonComponent,
     EpisodeComponent,
     FilmComponent,
+    SearchComponent,
     
   ],
   imports: [

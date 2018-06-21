@@ -30,4 +30,7 @@ export class SerieService {
     return this._http.get(environment.apiEndpoint+''+catid+'/releated/get').map(res => res.json());
   }
 
+  searchSeries(query: String, page: Number) {
+    return this._http.get(environment.apiEndpoint+'search/'+query+'/get/'+page).map(res => res.json());
+  }
 }

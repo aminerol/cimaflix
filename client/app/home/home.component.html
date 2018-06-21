@@ -1,6 +1,5 @@
 <div class="container">
-
-  <owl-carousel [options]="{items: 6, dots: true, navigation: true}" id="owl-demo" [items]="popularEpisodes" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+  <owl-carousel [options]="sliderOptions" id="owl-demo" [items]="popularEpisodes" [carouselClasses]="['owl-theme', 'row', 'sliding']">
     <div class="item" *ngFor="let episode of popularEpisodes;let i = index">
       <div class="image">
         <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
