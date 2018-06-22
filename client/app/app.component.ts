@@ -17,11 +17,9 @@ export class AppComponent {
   }
   ToggleSearch(event){
     this.Searchtoggle = !this.Searchtoggle;
-    console.log(this.Searchtoggle);   
   }
   ToggleMenu(event){
     this.Menutoggle = !this.Menutoggle; 
-    console.log(this.Menutoggle);       
   }
 
   onSubmit() {
