@@ -14,11 +14,11 @@ import { EpisodeComponent } from './series/episode/episode.component';
 
 import { FilmComponent } from './films/film/film.component';
 
+
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 const appRoutes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent
-  },
   {
     path: 'search/:query',
     component: SearchComponent
@@ -54,19 +54,24 @@ const appRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home',
+    component: HomeComponent
+  },
+  {
+    path: '',
+    redirectTo: '/',
     pathMatch: 'full'
   },
   {
     path: '**',
     // component: PageNotFoundComponent
-    redirectTo: '/home'
-  }
+    redirectTo: '/'
+}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   ],
   exports: [
     RouterModule

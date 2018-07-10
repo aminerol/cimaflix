@@ -6,6 +6,7 @@ import { Category } from '../app/models/categorie';
 
 export const environment = {
   production: false,
+  Endpoint: "http://localhost:3000/",
   apiEndpoint: "http://localhost:3000/",
   categories: [ 
     new Category(4, "مسلسلات رمضان 2018", "مسلسلات-رمضان-2018"),

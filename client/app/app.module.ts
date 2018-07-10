@@ -25,6 +25,10 @@ import { CategorieService } from './series/categorie/categorie.service'
 import { SerieService } from './series/serie/serie.service'
 import { EpisodeService } from './series/episode/episode.service';
 import { SearchComponent } from './search/search.component'
+import { LinkService } from './link.service';
+
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 
 const config = {
@@ -59,13 +63,15 @@ const config = {
     FileUploadModule,
     AppRoutingModule,
     NgxPaginationModule,
-    OwlModule
+    OwlModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
   providers: [
     SeriesService,
     CategorieService,
     SerieService,
-    EpisodeService
+    EpisodeService,
+    LinkService
   ],
   bootstrap: [AppComponent]
 })

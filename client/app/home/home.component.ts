@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   sliderOptions = {items: 6, 
     dots: true, 
-    nav : true, 
+    nav : true,
+    rtl: true, 
     lazyLoad: true,
     autoplay: true,
     slideBy : 2 ,

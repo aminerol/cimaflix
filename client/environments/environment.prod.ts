@@ -2,7 +2,8 @@ import { Category } from "../app/models/categorie";
 
 export const environment = {
   production: true,
-  apiEndpoint: "http://cimaflix.cf/api/",
+  Endpoint: "https://cimaflix.co/",
+  apiEndpoint: "https://cimaflix.co/api/",
   categories: [ 
     new Category(4, "مسلسلات رمضان 2018", "مسلسلات-رمضان-2018"),
     new Category(3, "مسلسلات تركية", "مسلسلات-تركية"),

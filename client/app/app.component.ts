@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 @Component({
   selector: '.navbar',
@@ -12,7 +13,7 @@ export class AppComponent {
   Searchtoggle : boolean = false;
   Menutoggle : boolean = false;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
     
   }
   ToggleSearch(event){
