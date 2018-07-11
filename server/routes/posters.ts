@@ -25,16 +25,18 @@ var storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage, fileFilter: imageFilter });
 const crudRouter = Router();
-const imagemin = require("imagemin");
-const imageminPngquant = require("imagemin-pngquant");
+const compress_images = require('compress-images')
 
 crudRouter.post("/poster/post", upload.single("img"), uploadFile);
 crudRouter.route("/poster/optimize").get((req, res) => {
-  imagemin(["dist/public/assets/posters/*.jpg"], "dist/public/assets/optimized", {
-    use: [imageminPngquant()]
-  }).then(() => {
-    console.log("Images optimized");
-  });
+    const INPUT_path_to_your_images = 'dist/public/assets/posters/*.{jpg,JPG,jpeg,JPEG,png,svg,gif}';
+    const OUTPUT_path = 'dist/public/assets/optimized/';
+    compress_images(INPUT_path_to_your_images, OUTPUT_path, {compress_force: false, statistic: true, autoupdate: true}, false,
+        {jpg: {engine: 'mozjpeg', command: ['-quality', '60']}},
+        {png: {engine: 'pngquant', command: ['--quality=20-50']}},
+        {svg: {engine: 'svgo', command: '--multipass'}},
+        {gif: {engine: 'gifsicle', command: ['--colors', '64', '--use-col=web']}}, function(){
+    });
 });
 export default crudRouter;
 /**
