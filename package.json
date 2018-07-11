@@ -50,6 +50,8 @@
     "debug": "^2.3.3",
     "express": "^4.14.0",
     "express-sitemap": "^1.8.0",
+    "imagemin": "^5.3.1",
+    "imagemin-pngquant": "^5.1.0",
     "memory-cache": "^0.2.0",
     "mongoose": "^4.7.2",
     "morgan": "^1.7.0",
@@ -62,6 +64,7 @@
     "require-all": "^2.1.0",
     "rxjs": "^5.1.0",
     "script-loader": "^0.7.2",
+    "sharp": "^0.20.5",
     "sitemap": "^1.13.0",
     "typescript": "2.3.4",
     "zone.js": "^0.8.4"

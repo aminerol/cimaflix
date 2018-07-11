@@ -25,9 +25,10 @@ crudRouter.route("/episodes/get/:page").get((req, res) => {
   } else {
     var perPage = 6 * 5;
     var page = req.params.page || 1;
-
+ 
     model
       .find()
+      .sort({ date: -1 })
       .skip(perPage * page - perPage)
       .limit(perPage)
       .exec(function(err, ms) {
