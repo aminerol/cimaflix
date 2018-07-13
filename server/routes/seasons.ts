@@ -48,6 +48,7 @@ crudRouter.route("/seasons/post").post((req, res) => {
         if (err) {
           res.json({ error: err });
         } else {
+          cache.del(`getSeasonsOfaSerie_${m.serieid}`);
           res.json(m);
         }
       });

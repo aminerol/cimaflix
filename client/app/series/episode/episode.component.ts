@@ -107,6 +107,20 @@ export class EpisodeComponent implements OnInit, AfterViewInit {
                   " اونلاين بدون تقطيع";
 
                 this._title.setTitle(title);
+
+                let description = environment.description.replace(
+                  /{{description}}/g,
+                  `مسلسل ${this.serie.title} الموسم ${this.season.number} الحلقة ${this.episode.number}`
+                );
+                this._meta.updateTag(
+                  { name: "description", content: description },
+                  `name='description'`
+                );
+                this._meta.updateTag(
+                  { property: "og:description", content: description },
+                  `property='og:description'`
+                );
+
                 this._meta.updateTag(
                   { name: "keywords", content: this.tags.toString() },
                   `name='keywords'`

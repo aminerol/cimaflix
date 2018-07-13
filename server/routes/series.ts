@@ -1,13 +1,6 @@
 import { Router } from "express";
 import * as NodeCache from "node-cache";
 
-const CatTtl = 60 * 60 * 24;
-var catCache = new NodeCache({
-  stdTTL: CatTtl,
-  checkperiod: CatTtl * 0.2,
-  useClones: false
-});
-
 const SerieTtl = 60 * 60 * 24 * 7;
 var SerieCache = new NodeCache({
   stdTTL: SerieTtl,
@@ -24,62 +17,44 @@ const model = models["series"].default;
 
 //return count and only 12 serie from given categorie
 crudRouter.route("/categories/get/:catid").get((req, res) => {
-  const key = `getCategoty_${req.params.catid}`;
-  let value = catCache.get(key);
-  if (value) {
-    res.json(value);
-  } else {
-    var perPage = 12;
-    var catId = req.params.catid;
-    model
-      .find({ type: catId }, { slug: 1, title: 1, poster: 1 })
-      .limit(perPage)
-      .exec(function(err, ms) {
-        model.count().exec(function(err, count) {
-          if (err) {
-            catCache.set(key, { error: err });
-            res.json({ error: err });
-          } else {
-            catCache.set(key, { items: ms, total: count });
-            res.json({ items: ms, total: count });
-          }
-        });
+  var perPage = 12;
+  var catId = req.params.catid;
+  model
+    .find({ type: catId }, { slug: 1, title: 1, poster: 1 })
+    .limit(perPage)
+    .exec(function(err, ms) {
+      model.count().exec(function(err, count) {
+        if (err) {
+          res.json({ error: err });
+        } else {
+          res.json({ items: ms, total: count });
+        }
       });
-  }
+    });
 });
 
 // return count and series from given category with pagination
 crudRouter.get("/series/get/:catid/:page", (req, res) => {
-  const key = `getSeriesFromCategoryWithPagination_${req.params.catid}_${
-    req.params.page
-  }`;
-  let value = catCache.get(key);
-  if (value) {
-    res.json(value);
-  } else {
-    var perPage = 6 * 5;
-    var page = req.params.page || 1;
-    var catid = req.params.catid;
+  var perPage = 6 * 5;
+  var page = req.params.page || 1;
+  var catid = req.params.catid;
 
-    model
-      .find({ type: catid }, { slug: 1, title: 1, poster: 1 })
-      .skip(perPage * page - perPage)
-      .limit(perPage)
-      .exec(function(err, ms) {
-        model
-          .find({ type: catid })
-          .count()
-          .exec(function(err, count) {
-            if (err) {
-              catCache.set(key, { error: err });
-              res.json({ error: err });
-            } else {
-              catCache.set(key, { items: ms, total: count });
-              res.json({ items: ms, total: count });
-            }
-          });
-      });
-  }
+  model
+    .find({ type: catid }, { slug: 1, title: 1, poster: 1 })
+    .skip(perPage * page - perPage)
+    .limit(perPage)
+    .exec(function(err, ms) {
+      model
+        .find({ type: catid })
+        .count()
+        .exec(function(err, count) {
+          if (err) {
+            res.json({ error: err });
+          } else {
+            res.json({ items: ms, total: count });
+          }
+        });
+    });
 });
 
 // return all info and seasons and episodes of a serie
@@ -128,39 +103,29 @@ crudRouter.route("/:catid/releated/get").get((req, res) => {
 
 // return count and series from given query with pagination
 crudRouter.route("/search/:query/get/:page").get((req, res) => {
-  const key = `searchWithQueryWithPagination_${req.params.query}_${
-    req.params.page
-  }`;
-  let value = catCache.get(key);
-  if (value) {
-    res.json(value);
-  } else {
-    var perPage = 6 * 5;
-    var page = req.params.page || 1;
-    var query = req.params.query;
+  var perPage = 6 * 5;
+  var page = req.params.page || 1;
+  var query = req.params.query;
 
-    model
-      .find(
-        { title: { $regex: query } },
-        { slug: 1, title: 1, poster: 1, type: 1 }
-      )
-      .skip(perPage * page - perPage)
-      .limit(perPage)
-      .exec(function(err, ms) {
-        model
-          .find({ title: { $regex: query } })
-          .count()
-          .exec(function(err, count) {
-            if (err) {
-              catCache.set(key, { error: err });
-              res.json({ error: err });
-            } else {
-              catCache.set(key, { items: ms, total: count });
-              res.json({ items: ms, total: count });
-            }
-          });
-      });
-  }
+  model
+    .find(
+      { title: { $regex: query } },
+      { slug: 1, title: 1, poster: 1, type: 1 }
+    )
+    .skip(perPage * page - perPage)
+    .limit(perPage)
+    .exec(function(err, ms) {
+      model
+        .find({ title: { $regex: query } })
+        .count()
+        .exec(function(err, count) {
+          if (err) {
+            res.json({ error: err });
+          } else {
+            res.json({ items: ms, total: count });
+          }
+        });
+    });
 });
 
 crudRouter.route("/series/post").post((req, res) => {

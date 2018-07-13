@@ -35,8 +35,20 @@ export class CategorieComponent implements OnInit {
       );
 
       let url = document.location.protocol + "//" + document.location.hostname;
+
       let title = 'CimaFlix | شاهد مسلسلات اونلاين بدون تقطيع | '+this.categorie.name+'';
       this._title.setTitle(title);
+
+      let description = environment.description.replace(/{{description}}/g, this.categorie.name.toString());
+      this._meta.updateTag(
+        { name: "description", content: description },
+        `name='description'`
+      );
+      this._meta.updateTag(
+        { property: "og:description", content: description },
+        `property='og:description'`
+      );
+
       this._meta.updateTag(
         { property: "og:title", content: title },
         `property='og:title'`

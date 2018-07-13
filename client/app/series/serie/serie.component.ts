@@ -58,8 +58,21 @@ export class SerieComponent implements OnInit {
             /{{serie.title}}/g,
             this.serie.title
           );
-
           this._title.setTitle(title);
+
+          let description = environment.description.replace(
+            /{{description}}/g,
+            `مسلسل ${this.serie.title}`
+          );
+          this._meta.updateTag(
+            { name: "description", content: description },
+            `name='description'`
+          );
+          this._meta.updateTag(
+            { property: "og:description", content: description },
+            `property='og:description'`
+          );
+
           this._meta.updateTag(
             { name: "keywords", content: this.tags.toString() },
             `name='keywords'`

@@ -4,14 +4,14 @@ const sitemap = require("sitemap");
 import * as NodeCache from "node-cache";
 const crudRouter = Router();
 
-const sitemaptTtl = 60 * 60 * 24 * 30; //hour;
+const sitemaptTtl = 60 * 60 * 24 * 30;
 var sitemapCache = new NodeCache({
   stdTTL: sitemaptTtl,
   checkperiod: sitemaptTtl * 0.2,
   useClones: false
 });
 
-const sitemapEptTtl = 60 * 60 * 24; //hour;
+const sitemapEptTtl = 60 * 60 * 24;
 var sitemapEpCache = new NodeCache({
   stdTTL: sitemapEptTtl,
   checkperiod: sitemapEptTtl * 0.2,

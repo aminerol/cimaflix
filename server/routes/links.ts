@@ -48,6 +48,7 @@ crudRouter.route("/links/post").post((req, res) => {
         if (err) {
           res.json({ error: err });
         } else {
+          cache.del(`getLinksOfanEpisode_${m.episodeid}`);
           res.json(m);
         }
       });

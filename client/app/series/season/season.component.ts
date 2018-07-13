@@ -73,8 +73,21 @@ export class SeasonComponent implements OnInit {
               " الموسم " +
               this.season.number +
               " اونلاين بدون تقطيع";
-
             this._title.setTitle(title);
+
+            let description = environment.description.replace(
+              /{{description}}/g,
+              `مسلسل ${this.serie.title} الموسم ${this.season.number}`
+            );
+            this._meta.updateTag(
+              { name: "description", content: description },
+              `name='description'`
+            );
+            this._meta.updateTag(
+              { property: "og:description", content: description },
+              `property='og:description'`
+            );
+
             this._meta.updateTag(
               { name: "keywords", content: this.tags.toString() },
               `name='keywords'`

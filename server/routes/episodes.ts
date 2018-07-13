@@ -53,6 +53,7 @@ crudRouter.route("/episodes/post").post((req, res) => {
           if (err) {
             res.json({ error: err });
           } else {
+            cache.del(`getEpisodesFromSeasonId_${m.seasonid}`)
             res.json(m);
           }
         });
