@@ -33,6 +33,17 @@ crudRouter.route("/:episodeid/links/get").get((req, res) => {
   }
 });
 
+crudRouter.route("/links/delete").post((req, res) => {
+  model.remove({ url: req.params.url }, function(err) {
+    if (!err) {
+      res.json({ succes: 'deleted' });
+    }
+    else {
+      res.json({ error: err });
+    }
+  });
+});
+
 crudRouter.route("/links/post").post((req, res) => {
   const m = new model();
   Object.assign(m, req.body);

@@ -6,7 +6,7 @@
     "ng": "ng",
     "postinstall": "npm run build",
     "postbuild": "cpx '.htaccess' dist/public/ && cpx 'ie-polyfills.min.js' dist/public/assets/js && cpx 'robots.txt' dist/public/ ",
-    "build": "ng build --prod --build-optimizer=true --aot=true --delete-output-path=false --vendor-chunk=false --output-hashing=none && tsc --project server/tsconfig.app.json",
+    "build": "ng build --prod --aot --delete-output-path=false --vendor-chunk=false --output-hashing=none && tsc --project server/tsconfig.app.json",
     "build-dev": "ng build --delete-output-path=false && tsc --project server/tsconfig.app.json",
     "start-dev": "pm2 start dist/server/www.js --no-daemon",
     "start": "pm2 start dist/server/www.js",

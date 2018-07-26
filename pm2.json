@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "www",
+      "script": "dist/server/www.js",
+      "instances": 1,
+      "exec_mode": "fork",
+      "env": {
+        "PORT": "3000"
+      }
+    }
+  ]
+}
