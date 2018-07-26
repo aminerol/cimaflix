@@ -34,7 +34,7 @@ crudRouter.route("/:episodeid/links/get").get((req, res) => {
 });
 
 crudRouter.route("/:episodeid/links/delete").post((req, res) => {
-  model.remove({ episodeid: req.body.episodeid }, function(err) {
+  model.remove({ episodeid: req.params.episodeid }, function(err) {
     if (!err) {
       res.json({ succes: 'deleted' });
     }
