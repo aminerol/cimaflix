@@ -15,10 +15,6 @@ const models = require("require-all")({
 });
 const model = models["episodes"].default;
 
-crudRouter.route("/episodes/test").get((req, res) => {
-  res.json({ succes: 'test done' });
-});
-
 crudRouter.route("/:seasonid/episodes/get").get((req, res) => {
   const key = `getEpisodesFromSeasonId_${req.params.seasonid}`;
   let value = cache.get(key);
