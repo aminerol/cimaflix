@@ -4,7 +4,7 @@
       <a routerLink="/">الرئيسية</a>
     </li>
     <li>
-      <a routerLink="/مسلسلات">المسلسلات</a>
+      <a routerLink="مسلسلات">المسلسلات</a>
     </li>
     <li>
       <a routerLink="#">{{categorie.name}}</a>
@@ -20,7 +20,7 @@
   <ul id="boxoffice" class="iconB">
     <li *ngFor="let serie of series | paginate: { id: 'server', itemsPerPage: 30, currentPage: currentpage, totalItems: total }">
       <div class="image">
-        <a [routerLink]="['/', categorie.slug, serie.slug]" title="{{serie.title}}">
+        <a [routerLink]="[categorie.slug, serie.slug]" title="{{serie.title}}">
           <span class="tut">
             <img src="{{serie.poster}}" class="er" alt="{{serie.title}} مشاهدة" title="{{serie.title}}"> </span>
         </a>
@@ -34,7 +34,8 @@
 
 <div class="container">
   <div class="has-text-centered">
-    <pagination-template #p="paginationApi" id="server" (pageChange)="getPage($event, categorie.catId)" previousLabel="labels.previousLabel" nextLabel="labels.nextLabel">
+    <pagination-template #p="paginationApi" id="server" (pageChange)="getPage($event, categorie.catId)" previousLabel="labels.previousLabel"
+      nextLabel="labels.nextLabel">
       <ul class="custom-pagination">
         <li class="pagination-previous" [class.disabled]="p.isFirstPage()">
           <a *ngIf="!p.isFirstPage()" (click)="p.previous()">

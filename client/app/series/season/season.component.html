@@ -4,13 +4,13 @@
       <a routerLink="/">الرئيسية</a>
     </li>
     <li>
-      <a routerLink="/مسلسلات">المسلسلات</a>
+      <a routerLink="مسلسلات">المسلسلات</a>
     </li>
     <li>
-      <a [routerLink]="['/', catslug]">{{categorie.name}}</a>
+      <a [routerLink]="[catslug]">{{categorie.name}}</a>
     </li>
     <li>
-      <a [routerLink]="['/', catslug, serieslug]">{{serie?.title}}</a>
+      <a [routerLink]="[catslug, serieslug]">{{serie?.title}}</a>
     </li>
     <li>
       <a routerLink="#">الموسم {{season?.number}}</a>
@@ -47,7 +47,7 @@
               <p>{{serie.sypnosis}}</p>
               <div class="row">
                 <div class="col-sm-3 pb-2" *ngFor="let episode of episodes">
-                  <a class="btn btn-block btn-seaseon" [routerLink]="['/', categorie.slug, serie.slug, season.slug, episode.slug]">الحلقة {{episode.number}}</a>
+                  <a class="btn btn-block btn-seaseon" [routerLink]="[categorie.slug, serie.slug, season.slug, episode.slug]">الحلقة {{episode.number}}</a>
                 </div>
               </div>
               <br>
@@ -63,7 +63,8 @@
         <div class="list-group-item bg-dark text-white">
           <span class="glyphicon glyphicon-stats mr-2"></span> مواسم {{serie.title}} :
         </div>
-        <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{'bg-warning text-dark': se.slug == seasonslug}" class="list-group-item list-group-item-action" title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
+        <a [routerLink]="[categorie.slug, serie.slug, se.slug]" [ngClass]="{'bg-warning text-dark': se.slug == seasonslug}" class="list-group-item list-group-item-action"
+          title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
           <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>{{serie.title}} الموسم {{se.number}}</a>
       </div>
     </div>
