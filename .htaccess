@@ -5,6 +5,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
+  RewriteRule ^#/(.*)$ /$1 [L,NC,R]
 </IfModule>
 
 <ifModule mod_gzip.c>
