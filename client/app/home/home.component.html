@@ -2,7 +2,7 @@
   <owl-carousel [options]="sliderOptions" id="owl-demo" [items]="popularEpisodes" [carouselClasses]="['owl-theme', 'row', 'sliding']">
     <div class="item" *ngFor="let episode of popularEpisodes;let i = index">
       <div class="image">
-        <a [routerLink]="[episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           <span class="tut">
             <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           </span>
@@ -20,7 +20,7 @@
   <div id="owl-demo">
     <div class="item" *ngFor="">
       <div class="image">
-        <a [routerLink]="[episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           <span class="tut">
             <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           </span>
@@ -47,7 +47,7 @@
   <ul id="boxoffice" class="iconB">
     <li *ngFor="let episode of latestEpisodes | paginate: { id: 'server', itemsPerPage: 30, currentPage: currentpage, totalItems: total }">
       <div class="image">
-        <a [routerLink]="[episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
+        <a [routerLink]="['/', episode.catSlug, episode.serieSlug, episode.seasonSlug, episode.episodeSlug]" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           <span class="tut">
             <img src="{{episode.seriePoster}}" class="er" alt="الموسم {{episode.seasonNumber}} {{episode.serieTitle}} مشاهدة" title="{{episode.serieTitle}} الموسم {{episode.seasonNumber}} الحلقة {{episode.episodeNumber}}">
           </span>
@@ -98,7 +98,7 @@
   <ul id="boxoffice" class="iconB">
     <li *ngFor="let item of toDos">
       <div class="image">
-        <a [routerLink]="['/فيلم', 'الاب-الروحى']">
+        <a [routerLink]="['/', '/فيلم', 'الاب-الروحى']">
           <span class="tut">
             <img src="assets/imgs/poster.jpg" class="er" alt="film Wonder streaming" title="Wonder poster"> </span>
           <span class="h2">

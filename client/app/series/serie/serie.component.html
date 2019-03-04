@@ -7,7 +7,7 @@
       <a routerLink="مسلسلات">المسلسلات</a>
     </li>
     <li>
-      <a [routerLink]="[categorie.slug]">{{categorie.name}}</a>
+      <a [routerLink]="['/', categorie.slug]">{{categorie.name}}</a>
     </li>
     <li>
       <a routerLink="#">{{serie?.title}}</a>
@@ -43,7 +43,7 @@
               <p>{{serie.sypnosis}}</p>
               <div class="row">
                 <div class="col-sm-3 pb-2" *ngFor="let season of seasons">
-                  <a class="btn btn-block btn-seaseon" [routerLink]="[categorie.slug, serie.slug, season.slug]">الموسم {{season.number}}</a>
+                  <a class="btn btn-block btn-seaseon" [routerLink]="['/', categorie.slug, serie.slug, season.slug]">الموسم {{season.number}}</a>
                 </div>
               </div>
               <br>
@@ -59,7 +59,7 @@
         <div class="list-group-item bg-dark text-white">
           <span class="glyphicon glyphicon-stats mr-2"></span> مسلسلات ذات صلة:
         </div>
-        <a [routerLink]="[categorie.slug, se.slug]" class="list-group-item list-group-item-action" title="شاهد مسلسل {{serie.title}}"
+        <a [routerLink]="['/', categorie.slug, se.slug]" class="list-group-item list-group-item-action" title="شاهد مسلسل {{serie.title}}"
           *ngFor="let se of series">
           <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>{{se.title}}</a>
       </div>

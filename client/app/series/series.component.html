@@ -12,7 +12,7 @@
 <!-- Last All Series   !-->
 <div class="container" *ngFor="let category of categories">
   <div class="promo-group-header">
-    <a class="btn btn-default btn-xs" [routerLink]="[category.slug]"
+    <a class="btn btn-default btn-xs" [routerLink]="['/', category.slug]"
       >تصفح الكل</a
     >
     <h3 class="promo-group-header__title">{{ category.name }}</h3>
