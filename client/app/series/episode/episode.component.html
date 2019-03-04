@@ -4,19 +4,27 @@
       <a class="breadcrumb-item" routerLink="/">الرئيسية</a>
     </li>
     <li>
-      <a class="breadcrumb-item" routerLink="مسلسلات">المسلسلات</a>
+      <a class="breadcrumb-item" routerLink="/مسلسلات">المسلسلات</a>
     </li>
     <li>
-      <a class="breadcrumb-item" [routerLink]="['/', catslug]">{{categorie.name}}</a>
+      <a class="breadcrumb-item" [routerLink]="['/', catslug]">{{
+        categorie.name
+      }}</a>
     </li>
     <li>
-      <a class="breadcrumb-item" [routerLink]="['/', catslug, serieslug]">{{serie?.title}}</a>
+      <a class="breadcrumb-item" [routerLink]="['/', catslug, serieslug]">{{
+        serie?.title
+      }}</a>
     </li>
     <li>
-      <a class="breadcrumb-item" [routerLink]="['/', catslug, serieslug, seasonslug]">الموسم {{season?.number}}</a>
+      <a
+        class="breadcrumb-item"
+        [routerLink]="['/', catslug, serieslug, seasonslug]"
+        >الموسم {{ season?.number }}</a
+      >
     </li>
     <li>
-      <a class="breadcrumb-item" routerLink="#">الحلقة {{episode?.number}}</a>
+      <a class="breadcrumb-item" routerLink="#">الحلقة {{ episode?.number }}</a>
     </li>
   </ul>
 </div>
@@ -26,85 +34,140 @@
     <div class="col-sm-9 col-xs-12" *ngIf="episode">
       <div class="card text-white bg-dark">
         <div class="card-header">
-          <h1 class="mb-0">شاهد مسلسل {{serie.title}} الموسم {{season.number}} الحلقة {{episode.number}}</h1>
+          <h1 class="mb-0">
+            شاهد مسلسل {{ serie.title }} الموسم {{ season.number }} الحلقة
+            {{ episode.number }}
+          </h1>
         </div>
         <div class="card-body text-dark bg-white">
           <div class="pt-2">
             <div class="row">
               <div class="col-sm-3 col-xs-12">
-                <img class="img-fluid" alt="{{serie.title}} الموسم {{season.number}} الحلقة {{episode.number}}" title="{{serie.title}} الموسم {{season.number}} الحلقة {{episode.number}}"
-                  src="{{serie.poster}}" width="177" height="240">
+                <img
+                  class="img-fluid"
+                  alt="{{ serie.title }} الموسم {{ season.number }} الحلقة {{
+                    episode.number
+                  }}"
+                  title="{{ serie.title }} الموسم {{ season.number }} الحلقة {{
+                    episode.number
+                  }}"
+                  src="{{ serie.poster }}"
+                  width="177"
+                  height="240"
+                />
                 <button class="btn btn-block mb-2 btn-seaseon">
-                  <i class="glyphicon glyphicon-download-alt"></i> الموسم {{season.number}} كامل</button>
+                  <i class="glyphicon glyphicon-download-alt"></i> الموسم
+                  {{ season.number }} كامل
+                </button>
               </div>
               <div class="col-sm-9 col-xs-12">
                 <h2 class="text-center">معلومات حول المسلسل :</h2>
                 <div>
                   <p class="mb-1">
-                    <strong>النوع : </strong> {{serie.genre}}</p>
+                    <strong>النوع : </strong> {{ serie.genre }}
+                  </p>
+                  <p class="mb-1"><strong>السنة : </strong> {{ serie.year }}</p>
                   <p class="mb-1">
-                    <strong>السنة : </strong> {{serie.year}}</p>
+                    <strong>الممثلين : </strong>{{ serie.actors }}
+                  </p>
                   <p class="mb-1">
-                    <strong>الممثلين : </strong>{{serie.actors}}</p>
+                    <strong>عدد المشاهدات : </strong>{{ episode.views }}
+                  </p>
                   <p class="mb-1">
-                    <strong>عدد المشاهدات : </strong>{{episode.views}}</p>
-                  <p class="mb-1">
-                    <strong>التقييم : </strong>{{serie.rate}}</p>
+                    <strong>التقييم : </strong>{{ serie.rate }}
+                  </p>
                 </div>
                 <h3 class="text-center">ملخص المسلسل :</h3>
-                <p>{{serie.sypnosis}}</p>
-                <div class="row">
-                </div>
-                <div class="position-relative mb-2 watch" id="player" #player (click)="LoadIframeInit()">
+                <p>{{ serie.sypnosis }}</p>
+                <div class="row"></div>
+                <div
+                  class="position-relative mb-2 watch"
+                  id="player"
+                  #player
+                  (click)="LoadIframeInit()"
+                >
                   <div class="loader2"></div>
                   <div class="bwac-btn">
                     <i class="glyphicon glyphicon-play"></i>
                   </div>
                 </div>
                 <h4>
-                  <i class="glyphicon glyphicon-play"></i> روابط المشاهدة : </h4>
+                  <i class="glyphicon glyphicon-play"></i> روابط المشاهدة :
+                </h4>
                 <div class="table-responsive">
-                  <table class="table table-bordered table-sm table-hover table-striped">
+                  <table
+                    class="table table-bordered table-sm table-hover table-striped"
+                  >
                     <tbody>
                       <tr *ngFor="let link of links">
-                        <td class="font-weight-bold" style="width: 1%" nowrap="">
-                          <i class="glyphicon glyphicon-play-circle"></i> رابط سريع :
+                        <td
+                          class="font-weight-bold"
+                          style="width: 1%"
+                          nowrap=""
+                        >
+                          <i class="glyphicon glyphicon-play-circle"></i> رابط
+                          سريع :
                         </td>
                         <td class="font-weight-bold">
-                          <img src="https://www.google.com/s2/favicons?domain={{link.host}}" alt="{{link.host}}" class="mr-1" width="16" height="16"
-                          />{{link.host}}
+                          <img
+                            src="https://www.google.com/s2/favicons?domain={{
+                              link.host
+                            }}"
+                            alt="{{ link.host }}"
+                            class="mr-1"
+                            width="16"
+                            height="16"
+                          />{{ link.host }}
                         </td>
                         <td style="width: 1%">
-                          <button class="btn btn-sm watch btn-seaseon" (click)="LoadIframe(link)">
-                            <i class="glyphicon glyphicon-play mr-2"></i>شاهد</button>
+                          <button
+                            class="btn btn-sm watch btn-seaseon"
+                            (click)="LoadIframe(link)"
+                          >
+                            <i class="glyphicon glyphicon-play mr-2"></i>شاهد
+                          </button>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <p>
-                  <i class="glyphicon glyphicon-tags mr-2"></i>{{tags}}</p>
+                <p><i class="glyphicon glyphicon-tags mr-2"></i>{{ tags }}</p>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <div class="col-sm-3 col-xs-12" style="float: left;">
       <div class="list-group mb-3">
         <div class="bg-dark list-group-item text-white">
-          <i class="glyphicon glyphicon-list mr-2" aria-hidden="true"></i>حلقات الموسم {{season.number}}</div>
-        <a [routerLink]="['/', categorie.slug, serie.slug, season.slug, ep.slug]" [ngClass]="{'bg-warning text-dark': ep.slug == episodeslug}"
-          class="list-group-item list-group-item-action" title="{{serie.title}} الموسم {{season.number}} الحلقة {{ep.number}}"
-          *ngFor="let ep of episodes">
+          <i class="glyphicon glyphicon-list mr-2" aria-hidden="true"></i>حلقات
+          الموسم {{ season.number }}
+        </div>
+        <a
+          [routerLink]="['/', categorie.slug, serie.slug, season.slug, ep.slug]"
+          [ngClass]="{ 'bg-warning text-dark': ep.slug == episodeslug }"
+          class="list-group-item list-group-item-action"
+          title="{{ serie.title }} الموسم {{ season.number }} الحلقة {{
+            ep.number
+          }}"
+          *ngFor="let ep of episodes"
+        >
           <i class="glyphicon glyphicon-play mr-2"></i>
-          <span class="float-left d-none">Playing</span>الحلقة {{ep.number}}</a>
+          <span class="float-left d-none">Playing</span>الحلقة
+          {{ ep.number }}</a
+        >
       </div>
       <div class="list-group">
-        <a [routerLink]="['/', categorie.slug, serie.slug, se.slug]" [ngClass]="{'bg-warning text-dark': se.slug == seasonslug}" class="list-group-item list-group-item-action"
-          title="{{serie.title}} الموسم {{se.number}}" *ngFor="let se of seasons">
-          <i class="glyphicon glyphicon-film mr-2"></i>الموسم {{se.number}}</a>
+        <a
+          [routerLink]="['/', categorie.slug, serie.slug, se.slug]"
+          [ngClass]="{ 'bg-warning text-dark': se.slug == seasonslug }"
+          class="list-group-item list-group-item-action"
+          title="{{ serie.title }} الموسم {{ se.number }}"
+          *ngFor="let se of seasons"
+        >
+          <i class="glyphicon glyphicon-film mr-2"></i>الموسم {{ se.number }}</a
+        >
       </div>
     </div>
   </div>

@@ -4,13 +4,13 @@
       <a routerLink="/">الرئيسية</a>
     </li>
     <li>
-      <a routerLink="مسلسلات">المسلسلات</a>
+      <a routerLink="/مسلسلات">المسلسلات</a>
     </li>
     <li>
-      <a [routerLink]="['/', categorie.slug]">{{categorie.name}}</a>
+      <a [routerLink]="['/', categorie.slug]">{{ categorie.name }}</a>
     </li>
     <li>
-      <a routerLink="#">{{serie?.title}}</a>
+      <a routerLink="#">{{ serie?.title }}</a>
     </li>
   </ul>
 </div>
@@ -20,37 +20,50 @@
     <div class="col-sm-9">
       <div class="card text-white bg-dark">
         <div class="card-header">
-          <h1 class="mb-0">شاهد مسلسل {{serie.title}} بدون تقطيع</h1>
+          <h1 class="mb-0">شاهد مسلسل {{ serie.title }} بدون تقطيع</h1>
         </div>
         <div class="card-body bg-white text-dark">
           <div class="row">
             <div class="col-sm-3">
-              <img class="img-fluid" alt="{{serie.title}}" title="{{serie.title}}" src="{{serie.poster}}" width="177" height="240">
+              <img
+                class="img-fluid"
+                alt="{{ serie.title }}"
+                title="{{ serie.title }}"
+                src="{{ serie.poster }}"
+                width="177"
+                height="240"
+              />
             </div>
             <div class="col-sm-9">
               <h2 class="text-center">معلومات حول المسلسل</h2>
               <div>
+                <p class="mb-1"><strong>النوع : </strong> {{ serie.genre }}</p>
+                <p class="mb-1"><strong>السنة : </strong> {{ serie.year }}</p>
                 <p class="mb-1">
-                  <strong>النوع : </strong> {{serie.genre}}</p>
-                <p class="mb-1">
-                  <strong>السنة : </strong> {{serie.year}}</p>
-                <p class="mb-1">
-                  <strong>الممثلين : </strong>{{serie.actors}}</p>
-                <p class="mb-1">
-                  <strong>التقييم : </strong>{{serie.rate}}</p>
+                  <strong>الممثلين : </strong>{{ serie.actors }}
+                </p>
+                <p class="mb-1"><strong>التقييم : </strong>{{ serie.rate }}</p>
               </div>
               <h3 class="text-center">ملخص المسلسل :</h3>
-              <p>{{serie.sypnosis}}</p>
+              <p>{{ serie.sypnosis }}</p>
               <div class="row">
                 <div class="col-sm-3 pb-2" *ngFor="let season of seasons">
-                  <a class="btn btn-block btn-seaseon" [routerLink]="['/', categorie.slug, serie.slug, season.slug]">الموسم {{season.number}}</a>
+                  <a
+                    class="btn btn-block btn-seaseon"
+                    [routerLink]="[
+                      '/',
+                      categorie.slug,
+                      serie.slug,
+                      season.slug
+                    ]"
+                    >الموسم {{ season.number }}</a
+                  >
                 </div>
               </div>
-              <br>
+              <br />
             </div>
           </div>
-          <p>
-            <i class="glyphicon glyphicon-tags mr-2"></i>{{tags}}</p>
+          <p><i class="glyphicon glyphicon-tags mr-2"></i>{{ tags }}</p>
         </div>
       </div>
     </div>
@@ -59,9 +72,15 @@
         <div class="list-group-item bg-dark text-white">
           <span class="glyphicon glyphicon-stats mr-2"></span> مسلسلات ذات صلة:
         </div>
-        <a [routerLink]="['/', categorie.slug, se.slug]" class="list-group-item list-group-item-action" title="شاهد مسلسل {{serie.title}}"
-          *ngFor="let se of series">
-          <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i>{{se.title}}</a>
+        <a
+          [routerLink]="['/', categorie.slug, se.slug]"
+          class="list-group-item list-group-item-action"
+          title="شاهد مسلسل {{ serie.title }}"
+          *ngFor="let se of series"
+        >
+          <i class="glyphicon glyphicon-film mr-2" aria-hidden="true"></i
+          >{{ se.title }}</a
+        >
       </div>
     </div>
   </div>
